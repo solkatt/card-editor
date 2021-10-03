@@ -33,14 +33,20 @@ const CardContent = (props) => {
 	}, [props.items])
 
 	const handleSize = (value, i) => {
-		// console.log(i)
-		let imgHeight = itemsRef.current[i].material.map.image.height
-		let imgWidth = itemsRef.current[i].material.map.image.width
-		// let imgHeight = itemsRef.current[i].material.map.image.height
-		console.log('height', imgHeight)
-		itemsRef.current[i].scale.x = value
-		itemsRef.current[i].scale.y = (imgHeight / imgWidth) * value
-		itemsRef.current[i].scale.z = value
+		console.log(itemsRef.current[i].geometry)
+
+		if (itemsRef.current[i].geometry.type === 'PlaneGeometry') {
+			let imgHeight = itemsRef.current[i].material.map.image.height
+			let imgWidth = itemsRef.current[i].material.map.image.width
+			itemsRef.current[i].scale.x = value
+			itemsRef.current[i].scale.y = (imgHeight / imgWidth) * value
+			itemsRef.current[i].scale.z = value
+		} else {
+			itemsRef.current[i].scale.x = value
+			itemsRef.current[i].scale.y = value
+			itemsRef.current[i].scale.z = value
+		}
+
 		// itemsRef.current[i].text = 'hej'
 	}
 
