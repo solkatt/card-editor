@@ -68,6 +68,7 @@ const CreateBoxButton = (props) => {
 
   let newBox = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({ color: 'green'}))
 
+  console.log('NEWBOX', newBox)
 
 
   return (
@@ -79,6 +80,51 @@ const CreateBoxButton = (props) => {
     }> Create BOX</button>
   )
 }
+
+
+const CreateImgButton = (props) => {
+
+
+  let { setContentState } = props
+
+
+
+ let sprite = new THREE.Sprite( new THREE.SpriteMaterial( { map: new THREE.TextureLoader().load( "kalasstrumpa1.png" ), color: 0xffffff } ) );
+ 
+ var planeGeom = new THREE.PlaneGeometry(20, 20);
+ var imgSrc = "kalasstrumpa1.png"
+ var mesh;
+ var tex = new THREE.TextureLoader().load(imgSrc, (tex) => {
+   tex.needsUpdate = true;
+   mesh.scale.set(.2, (tex.image.height / tex.image.width) * .2, .2);
+   mesh.position.set(1,1,0.1)
+ });
+ 
+ var material = new THREE.MeshBasicMaterial({
+   color: 0xffffff,
+   map: tex
+ });
+
+
+ mesh = new THREE.Mesh(planeGeom, material);
+
+
+
+
+
+  console.log('NEWBOX', mesh)
+
+
+  return (
+
+    <button onClick={() => setContentState(prevState => (
+      [...prevState, mesh]
+    )
+    )
+    }> Create IMG</button>
+  )
+}
+
 
 
 
@@ -192,6 +238,7 @@ const Editor = () => {
     <div className='editor-container'>
       <div className='dashboard'>
         <CreateBoxButton setContentState={setContentState} />
+        <CreateImgButton setContentState={setContentState} />
 
 
 
