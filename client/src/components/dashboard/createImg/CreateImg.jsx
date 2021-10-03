@@ -40,28 +40,35 @@ import * as THREE from 'three'
 const CreateImgButton = (props) => {
 	let { setContentState } = props
 
-	let sprite = new THREE.Sprite(
-		new THREE.SpriteMaterial({
-			map: new THREE.TextureLoader().load('kalasstrumpa1.png'),
-			color: 0xffffff,
-		})
-	)
+	// let sprite = new THREE.Sprite(
+	// 	new THREE.SpriteMaterial({
+	// 		map: new THREE.TextureLoader().load('kalasstrumpa1.png'),
+	// 		color: 0xffffff,
+	// 	})
+	// )
 
-	var planeGeom = new THREE.PlaneGeometry(20, 20)
+	var planeGeom = new THREE.PlaneBufferGeometry(50, 50)
+
 	var imgSrc = 'kalasstrumpa1.png'
 	var mesh
 	var tex = new THREE.TextureLoader().load(imgSrc, (tex) => {
 		tex.needsUpdate = true
 		mesh.scale.set(0.2, (tex.image.height / tex.image.width) * 0.2, 0.2)
-		mesh.position.set(1, 1, 0.1)
+		mesh.position.set(0, 0, 0.1)
 	})
+
+	tex.magFilter = THREE.NearestFilter
 
 	var material = new THREE.MeshBasicMaterial({
 		color: 0xffffff,
 		map: tex,
 	})
 
+	// material.toneMapped = false
+
 	mesh = new THREE.Mesh(planeGeom, material)
+
+	mesh.material.side = THREE.DoubleSide
 
 	return (
 		<button

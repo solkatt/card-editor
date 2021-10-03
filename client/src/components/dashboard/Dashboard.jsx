@@ -24,7 +24,7 @@ const Dashboard = (props) => {
 	// })
 
 	// console.log('selected:', selected.uuid)
-	// console.log('contentState', contentState)
+	console.log('contentState', contentState)
 
 	// useEffect(() => {
 	// 	if (selected) {

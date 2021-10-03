@@ -12,6 +12,8 @@ import ResponsiveText, { CreateTextButton } from '../Text'
 
 import Dashboard from '../dashboard/Dashboard'
 
+import { Stats } from '@react-three/drei'
+
 import { TextEl } from '../Text'
 // Css
 import './Editor.css'
@@ -32,9 +34,18 @@ const CardContent = (props) => {
 
 	const handleSize = (value, i) => {
 		// console.log(i)
+		let imgHeight = itemsRef.current[i].material.map.image.height
+		let imgWidth = itemsRef.current[i].material.map.image.width
+		// let imgHeight = itemsRef.current[i].material.map.image.height
+		console.log('height', imgHeight)
 		itemsRef.current[i].scale.x = value
-		itemsRef.current[i].scale.y = value
+		itemsRef.current[i].scale.y = (imgHeight / imgWidth) * value
 		itemsRef.current[i].scale.z = value
+		// itemsRef.current[i].text = 'hej'
+	}
+
+	const handleText = (value, i) => {
+		itemsRef.current[i].text.text = 'hej'
 	}
 
 	useEffect(() => {
@@ -47,6 +58,7 @@ const CardContent = (props) => {
 			<>
 				<primitive
 					// onClick={(item) => handleSize(i)}
+					// position={[0, 0, -1]}
 					key={i}
 					object={item}
 					ref={(el) => (itemsRef.current[i] = el)}
@@ -130,7 +142,7 @@ const Editor = () => {
 						editSelection={editSelection}
 					/>
 					<Scene contentState={contentState} />
-					{/* <TextEl /> */}
+					<Stats />
 				</Canvas>
 			</div>
 			<Dashboard
