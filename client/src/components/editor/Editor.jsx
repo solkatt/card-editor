@@ -9,6 +9,8 @@ import { DragControls } from 'three/examples/jsm/controls/DragControls'
 
 import * as THREE from 'three'
 
+import ResponsiveText from '../Text'
+import Input from '../Input'
 
 // Css
 import './Editor.css'
@@ -217,7 +219,7 @@ const Scene = (props) => {
   return (
     <>
       {/* <primitive object={ex} /> */}
-      <dragControls args={[[... contentState], camera, domElement]} />
+      <dragControls args={[[...contentState], camera, domElement]} />
     </>
   )
 }
@@ -229,7 +231,10 @@ const Scene = (props) => {
 
 const Editor = () => {
 
-  let [contentState, setContentState] = useState([])
+  const [contentState, setContentState] = useState([])
+
+  const [textContent, setTextContent] = useState('')
+
   // let [objects, setObjects] = useState([])
 
   console.log(contentState)
@@ -240,6 +245,7 @@ const Editor = () => {
         <CreateBoxButton setContentState={setContentState} />
         <CreateImgButton setContentState={setContentState} />
 
+      <Input setTextContent={setTextContent} />
 
 
       </div>
@@ -253,6 +259,8 @@ const Editor = () => {
 
       >
         {/* <Box position={[0, 0, 0]} /> */}
+        <ResponsiveText textContent={textContent} />
+
         <Card />
         <CardContent contentState={contentState} />
         <Scene contentState={contentState}  />
