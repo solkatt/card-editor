@@ -6,15 +6,14 @@ import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
 // Three
 import { DragControls } from 'three/examples/jsm/controls/DragControls'
 
-import * as THREE from 'three'
 
-import ResponsiveText, { CreateTextButton } from '../Text'
 
 import Dashboard from '../dashboard/Dashboard'
 
 import { Stats } from '@react-three/drei'
 
-import { TextEl } from '../Text'
+
+import CardContent from '../dashboard/cardContent/CardContent'
 // Css
 import './Editor.css'
 
@@ -22,58 +21,7 @@ extend({ DragControls, Text })
 
 ///////////////////////////////////////////////
 
-const CardContent = (props) => {
-	let { contentState, setSelected, editSelection, selected, scale } = props
 
-	const [localScale, setLocalScale] = useState([0.2, 0.2, 0.2])
-	const itemsRef = useRef([])
-
-	useEffect(() => {
-		itemsRef.current = itemsRef.current.slice(0, contentState.length)
-	}, [props.items])
-
-	const handleSize = (value, i) => {
-		console.log(itemsRef.current[i].geometry)
-
-		if (itemsRef.current[i].geometry.type === 'PlaneGeometry') {
-			let imgHeight = itemsRef.current[i].material.map.image.height
-			let imgWidth = itemsRef.current[i].material.map.image.width
-			itemsRef.current[i].scale.x = value
-			itemsRef.current[i].scale.y = (imgHeight / imgWidth) * value
-			itemsRef.current[i].scale.z = value
-		} else {
-			itemsRef.current[i].scale.x = value
-			itemsRef.current[i].scale.y = value
-			itemsRef.current[i].scale.z = value
-		}
-
-		// itemsRef.current[i].text = 'hej'
-	}
-
-	const handleText = (value, i) => {
-		itemsRef.current[i].text.text = 'hej'
-	}
-
-	useEffect(() => {
-		// console.log('HEEJ', editSelection)
-		if (editSelection) handleSize(editSelection.value, editSelection.index)
-	}, [editSelection])
-
-	return contentState.map((item, i) => {
-		return (
-			<>
-				<primitive
-					// onClick={(item) => handleSize(i)}
-					// position={[0, 0, -1]}
-					key={i}
-					object={item}
-					ref={(el) => (itemsRef.current[i] = el)}
-					onClick={(e) => setSelected(e)}
-				/>
-			</>
-		)
-	})
-}
 
 const Card = (props) => {
 	return (
@@ -119,18 +67,27 @@ const Editor = () => {
 		setEditSelection({ value: value, index: index })
 	}
 
+	const handleText = (value, index) => {
+		// console.log(value, index)
+		console.log('Editor>HandleText', value)
+		setTextContent({ value: value, index: index })
+	}
 	const handleSelectObj = (e) => {
 		// console.log('handleSelect', e.eventObject)
 		// console.log('handleSelect', e.object.uuid)
 		setSelected(e.object)
+		console.log(selected)
 	}
 
-	const deleteLast = () => {}
+	const deleteLast = () => {
+
+	}
 	// let [objects, setObjects] = useState([])
 
 	return (
 		<>
 			<div className='editor-container'>
+				<h2>{textContent.value}</h2>
 				<Canvas
 					background={'black'}
 					orthographic
@@ -146,6 +103,7 @@ const Editor = () => {
 						selected={selected}
 						scale={scale}
 						editSelection={editSelection}
+						textContent={textContent}
 					/>
 					<Scene contentState={contentState} />
 					<Stats />
@@ -159,7 +117,9 @@ const Editor = () => {
 				setScale={setScale}
 				selected={selected}
 				handleEdit={handleEdit}
+				handleText={handleText}
 				deleteLast={deleteLast}
+
 			/>
 		</>
 	)

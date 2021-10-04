@@ -70,6 +70,8 @@ const CreateImgButton = (props) => {
 
 	mesh.material.side = THREE.DoubleSide
 
+	// mesh.name = "Bengt"
+
 	return (
 		<button
 			onClick={() => setContentState((prevState) => [...prevState, mesh])}

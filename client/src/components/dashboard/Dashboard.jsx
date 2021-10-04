@@ -4,9 +4,11 @@ import Input from '../Input'
 import { CreateTextButton } from '../Text'
 import './Dashboard.css'
 
-import CreateBoxButton from '../dashboard/createBox/CreateBox'
 import CreateImgButton from '../dashboard/createImg/CreateImg'
 import { Vector3 } from 'three'
+
+import ImgControls from './controls/ImgControls'
+import TextControls from './controls/TextControls'
 
 const Dashboard = (props) => {
 	const {
@@ -16,6 +18,7 @@ const Dashboard = (props) => {
 		scale,
 		setScale,
 		selected,
+		handleText,
 		handleEdit,
 	} = props
 
@@ -42,60 +45,67 @@ const Dashboard = (props) => {
 
 		if (selected) {
 			objIndex = contentState.findIndex(
-				(obj) => obj.uuid == selected.uuid
+				(obj) => obj.uuid === selected.uuid
 			)
 		}
+		console.log(selected)
 
-		// let content = [...contentState]
-		// content[objIndex] = {
-		// 	...content[objIndex],
-		// 	scale: [0.2, 0.2, 0.2],
-		// }
-		// selected.scale = new Vector3(0.2, 0.2, 0.2)
 
 		handleEdit(e.target.value, objIndex)
 	}
 
+
+	const handleTextChange = (e) => {
+		console.log('Dashboard>handleTextChange:', e)
+
+		if (selected) {
+			objIndex = contentState.findIndex(
+				(obj) => obj.uuid === selected.uuid
+			)
+		}
+	let text = e.target.value
+
+		handleText(text, objIndex)
+	}
+
 	return (
+
 		<>
 			<div className='dashboard'>
-				<CreateBoxButton setContentState={setContentState} />
 				<CreateImgButton setContentState={setContentState} />
 				<CreateTextButton setContentState={setContentState} />
 				<Input setTextContent={setTextContent} />
 
-				{selected ? (
-					<div className='object-details'>
-						<span>
-							Current obj ID: {selected ? selected.uuid : ''}{' '}
-						</span>
-						{/* <span>ScaleX: {selected ? selected.scale.x : ''} </span> */}
-						<span>Index: {objIndex} </span>
+				{!selected && ' Select to edit'}
 
-						<div className='slidecontainer'>
-							<h2>{scale}</h2>
-							<input
-								onChange={(e) => handleChange(e)}
-								// onChange={(e) =>
-								// 	setScale([
-								// 		e.target.value,
-								// 		e.target.value,
-								// 		e.target.value,
-								// 	])
-								// }
-								type='range'
-								min='0.05'
-								max='1'
-								step='0.01'
-								value={selected.scale.x}
-								className='slider'
-								id='myRange'
-							/>
-						</div>
-					</div>
-				) : (
-					'Select to edit'
-				)}
+				{(selected && selected.geometry.type === 'PlaneGeometry') &&
+				(
+						<ImgControls 
+						selected={selected} 
+						objIndex={objIndex}
+						scale={scale}
+						handleChange={handleChange}
+
+						/>
+	)
+					} 
+						 
+						 {(selected && selected.geometry.type === 'InstancedBufferGeometry') &&
+				(
+					<TextControls 
+					selected={selected} 
+					objIndex={objIndex}
+					scale={scale}
+					handleChange={handleChange}
+					handleTextChange={handleTextChange}
+
+					/>
+				
+	)
+					} 
+						 
+
+
 			</div>
 		</>
 	)
