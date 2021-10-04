@@ -73,6 +73,7 @@ const Editor = () => {
 		setTextContent({ value: value, index: index })
 	}
 	const handleSelectObj = (e) => {
+		e.stopPropagation()
 		// console.log('handleSelect', e.eventObject)
 		// console.log('handleSelect', e.object.uuid)
 		setSelected(e.object)

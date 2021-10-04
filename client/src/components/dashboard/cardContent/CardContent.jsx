@@ -42,12 +42,19 @@ const CardContent = (props) => {
 		if (textContent) handleText(textContent.value, textContent.index)
 	}, [editSelection, textContent])
 
+
+	const addOnTop = (i) => {
+
+		return 0.1 * i
+	}
+
+
 	return contentState.map((item, i) => {
 		return (
 			<>
 				<primitive
 					// onClick={(item) => handleSize(i)}
-					// position={[0, 0, -1]}
+					// position={[0, 0, addOnTop(i)]}
 					renderOrder={i}
 					key={i}
 					object={item}

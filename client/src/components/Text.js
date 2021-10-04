@@ -56,6 +56,9 @@ export const CreateTextButton = (props) => {
 	text.position.z = -180
 	text.materialType = 'MeshPhongMaterial'
 	text.textAlign = 'justify'
+	text.anchorX = 'left'
+	text.anchorY = 'middle'
+	// text.anchorY = 'center'
 
 	return (
 		<button
