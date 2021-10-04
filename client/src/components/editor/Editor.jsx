@@ -72,6 +72,7 @@ const Editor = () => {
 		console.log('Editor>HandleText', value)
 		setTextContent({ value: value, index: index })
 	}
+
 	const handleSelectObj = (e) => {
 		e.stopPropagation()
 		// console.log('handleSelect', e.eventObject)
@@ -93,7 +94,7 @@ const Editor = () => {
 				colorManagement
 					// background={'black'}
 					orthographic
-					camera={{ zoom: 50, position: [0, 0, 1] }}
+					camera={{ zoom: 50, position: [0, 0, 10], near: 0.0001, far: 1000 }}
 			
 				>
 					{/* <Box position={[0, 0, 0]} /> */}
@@ -102,7 +103,7 @@ const Editor = () => {
 					{/* <Card /> */}
 					<CardContent
 						contentState={contentState}
-						setSelected={handleSelectObj}
+						setSelected={setSelected}
 						selected={selected}
 						scale={scale}
 						editSelection={editSelection}

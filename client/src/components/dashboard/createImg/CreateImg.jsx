@@ -67,6 +67,8 @@ const CreateImgButton = (props) => {
 		map: tex,
 	})
 
+	// material.depthTest = false
+
 
 	// material.toneMapped = false
 

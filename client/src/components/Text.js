@@ -51,13 +51,16 @@ export const CreateTextButton = (props) => {
 
 	// text.font = 'https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff'
 	text.text = 'Hello!'
-	text.fontSize = 1
+	text.fontSize = 3
 	text.color = 0x9966ff
-	text.position.z = -180
-	text.materialType = 'MeshPhongMaterial'
+	// text.position.z = -1
+	// text.material = new THREE.MeshBasicMaterial()
+	// text.materialType = 'MeshBasicMaterial'
 	text.textAlign = 'justify'
 	text.anchorX = 'left'
 	text.anchorY = 'middle'
+
+	// text.material.depthTest = false
 	// text.anchorY = 'center'
 
 	return (

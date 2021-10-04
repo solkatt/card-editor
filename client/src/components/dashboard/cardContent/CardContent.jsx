@@ -43,23 +43,38 @@ const CardContent = (props) => {
 	}, [editSelection, textContent])
 
 
-	const addOnTop = (i) => {
-
+	const addOnTop = (type, i) => {
+		if (type === 'PlaneGeometry') {
+			return 0.1 * i
+		}
+		if (type === 'InstancedBufferGeometry') {
+			return 0.1 * i
+		}
+		console.log(type)
 		return 0.1 * i
 	}
 
 
+ const handleSelection = (e) => {
+		e.stopPropagation()
+
+		setSelected(e.object)
+	}
+
 	return contentState.map((item, i) => {
+
+		const type = item.geometry.type
 		return (
 			<>
 				<primitive
 					// onClick={(item) => handleSize(i)}
-					// position={[0, 0, addOnTop(i)]}
-					renderOrder={i}
+					position={[0, 0, addOnTop(type, i)]}
+					// position={[0, 0, -10]}
+				// renderOrder={i}
 					key={i}
 					object={item}
 					ref={(el) => (itemsRef.current[i] = el)}
-					onClick={(e) => setSelected(e)}
+					onClick={(e) => handleSelection(e)}
 				/>
 			</>
 		)
