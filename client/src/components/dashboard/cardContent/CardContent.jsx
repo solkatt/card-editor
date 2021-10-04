@@ -48,6 +48,7 @@ const CardContent = (props) => {
 				<primitive
 					// onClick={(item) => handleSize(i)}
 					// position={[0, 0, -1]}
+					renderOrder={i}
 					key={i}
 					object={item}
 					ref={(el) => (itemsRef.current[i] = el)}

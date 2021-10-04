@@ -89,9 +89,11 @@ const Editor = () => {
 			<div className='editor-container'>
 				<h2>{textContent.value}</h2>
 				<Canvas
-					background={'black'}
+				colorManagement
+					// background={'black'}
 					orthographic
 					camera={{ zoom: 50, position: [0, 0, 1] }}
+			
 				>
 					{/* <Box position={[0, 0, 0]} /> */}
 					{/* <ResponsiveText textContent={textContent} /> */}

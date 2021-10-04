@@ -16,7 +16,7 @@ const TextControls = (props) => {
         <span>Index: {objIndex} </span>
   
         <div className='slidecontainer'>
-          <h2>{scale}</h2>
+          <h2>{selected.scale.x}</h2>
           <input
             onChange={(e) => handleChange(e)}
             // onChange={(e) =>
@@ -35,7 +35,7 @@ const TextControls = (props) => {
             id='myRange'
           />
           <input type="text"
-          //  defaultValue={selected.text}
+           defaultValue={selected.text}
             onChange={(e) => handleTextChange(e)} />
         </div>
       </div>

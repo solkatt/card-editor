@@ -72,6 +72,8 @@ const Dashboard = (props) => {
 
 		<>
 			<div className='dashboard'>
+
+				<h2>Design Name</h2>
 				<CreateImgButton setContentState={setContentState} />
 				<CreateTextButton setContentState={setContentState} />
 				<Input setTextContent={setTextContent} />

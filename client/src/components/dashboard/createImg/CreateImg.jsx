@@ -50,6 +50,7 @@ const CreateImgButton = (props) => {
 	var planeGeom = new THREE.PlaneBufferGeometry(50, 50)
 
 	var imgSrc = 'kalasstrumpa1.png'
+	// var imgSrc = 'nonagonPost2.jpg'
 	var mesh
 	var tex = new THREE.TextureLoader().load(imgSrc, (tex) => {
 		tex.needsUpdate = true
@@ -57,12 +58,15 @@ const CreateImgButton = (props) => {
 		mesh.position.set(0, 0, 0.1)
 	})
 
+	tex.encoding = THREE.sRGBEncoding
 	tex.magFilter = THREE.NearestFilter
+	// tex.magFilter = THREE.LinearFilter
 
 	var material = new THREE.MeshBasicMaterial({
-		color: 0xffffff,
+		transparent: false,
 		map: tex,
 	})
+
 
 	// material.toneMapped = false
 
