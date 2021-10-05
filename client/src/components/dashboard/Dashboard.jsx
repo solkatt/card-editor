@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 
 import Input from '../Input'
-import { CreateTextButton } from '../Text'
+import { CreateTextButton } from './createImg/Text'
 import './Dashboard.css'
 
 import CreateImgButton from '../dashboard/createImg/CreateImg'
@@ -9,6 +9,7 @@ import { Vector3 } from 'three'
 
 import ImgControls from './controls/ImgControls'
 import TextControls from './controls/TextControls'
+import UploadButton from './upload/UploadBtn'
 
 const Dashboard = (props) => {
 	const {
@@ -77,7 +78,7 @@ const Dashboard = (props) => {
 				<CreateImgButton setContentState={setContentState} />
 				<CreateTextButton setContentState={setContentState} />
 				<Input setTextContent={setTextContent} />
-
+				<UploadButton />
 				{!selected && ' Select to edit'}
 
 				{(selected && selected.geometry.type === 'PlaneGeometry') &&

@@ -72,30 +72,3 @@ export const CreateTextButton = (props) => {
 		</button>
 	)
 }
-
-export const TextEl = () => {
-	const [opts, setOpts] = useState({
-		// font: 'https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff',
-		fontSize: 1,
-		color: '#99ccff',
-		maxWidth: 20,
-		lineHeight: 1,
-		letterSpacing: 0,
-		textAlign: 'justify',
-		materialType: 'MeshPhongMaterial',
-	})
-
-	const text = 'Lorem ipsum dol.'
-
-	return (
-		<text
-			// position-z={-180}
-			{...opts}
-			// text={text}
-			// anchorX='center'
-			// anchorY='middle'
-		>
-			<meshPhongMaterial attach='material' color={opts.color} />
-		</text>
-	)
-}
