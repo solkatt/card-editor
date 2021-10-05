@@ -66,9 +66,18 @@ const Dashboard = (props) => {
 		<>
 			<div className='dashboard'>
 				<h2>Design Name</h2>
-				<CreateImgButton setContentState={setContentState} />
-				<CreateTextButton setContentState={setContentState} />
-				<Input setTextContent={setTextContent} />
+
+				{selected && selected.geometry.type === 'PlaneGeometry' && (
+					<h2>Bild</h2>
+				)}
+				{selected &&
+					selected.geometry.type === 'InstancedBufferGeometry' && (
+						<h2>Text</h2>
+					)}
+
+				{/* <CreateImgButton setContentState={setContentState} /> */}
+				{/* <CreateTextButton setContentState={setContentState} /> */}
+				{/* <Input setTextContent={setTextContent} /> */}
 				{/* <UploadButton setContentState={setContentState} /> */}
 
 				<div className='add-buttons'>
@@ -94,6 +103,7 @@ const Dashboard = (props) => {
 							scale={scale}
 							handleChange={handleChange}
 							handleTextChange={handleTextChange}
+							setTextContent={setTextContent}
 						/>
 					)}
 			</div>

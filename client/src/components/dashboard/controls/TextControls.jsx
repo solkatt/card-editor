@@ -1,3 +1,6 @@
+import TextInput from './TextInput'
+import ScaleSlider from './ScaleSlider'
+
 const TextControls = (props) => {
 	const { selected, objIndex, handleChange, handleTextChange } = props
 
@@ -8,30 +11,23 @@ const TextControls = (props) => {
 			<span>Index: {objIndex} </span>
 
 			<div className='slidecontainer'>
-				<h2>{selected.scale.x}</h2>
+				<ScaleSlider selected={selected} handleChange={handleChange} />
 				<input
-					onChange={(e) => handleChange(e)}
-					// onChange={(e) =>
-					// 	setScale([
-					// 		e.target.value,
-					// 		e.target.value,
-					// 		e.target.value,
-					// 	])
-					// }
-					type='range'
-					min='0.05'
-					max='1'
-					step='0.01'
-					value={selected.scale.x}
-					className='slider'
-					id='myRange'
-				/>
-				<input
+					style={{
+						height: '4rem',
+						borderRadius: '4px',
+						border: '1px #c2c2c2 solid',
+					}}
 					type='text'
 					defaultValue={selected.text}
 					onChange={(e) => handleTextChange(e)}
 				/>
 			</div>
+
+			{/* <TextInput
+				selected={selected}
+				handleTextChange={handleTextChange}
+			/> */}
 		</div>
 	)
 }
