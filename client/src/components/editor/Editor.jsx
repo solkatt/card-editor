@@ -122,33 +122,35 @@ const Editor = () => {
 	return (
 		<>
 			<div className='editor-container'>
-				<h2>{textContent.value}</h2>
-				<Canvas
-					colorManagement
-					// background={'black'}
-					orthographic
-					camera={{
-						zoom: 50,
-						position: [0, 0, 10],
-						near: 0.0001,
-						far: 1000,
-					}}
-				>
-					{/* <Box position={[0, 0, 0]} /> */}
-					{/* <ResponsiveText textContent={textContent} /> */}
+				<div className='design-area'>
+					{/* <h2>{textContent.value}</h2> */}
+					<Canvas
+						colorManagement
+						// background={'black'}
+						orthographic
+						camera={{
+							zoom: 50,
+							position: [0, 0, 10],
+							near: 0.0001,
+							far: 1000,
+						}}
+					>
+						{/* <Box position={[0, 0, 0]} /> */}
+						{/* <ResponsiveText textContent={textContent} /> */}
 
-					{/* <Card /> */}
-					<CardContent
-						contentState={contentState}
-						setSelected={setSelected}
-						selected={selected}
-						scale={scale}
-						editSelection={editSelection}
-						textContent={textContent}
-					/>
-					<Scene contentState={contentState} />
-					<Stats />
-				</Canvas>
+						{/* <Card /> */}
+						<CardContent
+							contentState={contentState}
+							setSelected={setSelected}
+							selected={selected}
+							scale={scale}
+							editSelection={editSelection}
+							textContent={textContent}
+						/>
+						<Scene contentState={contentState} />
+						<Stats />
+					</Canvas>
+				</div>
 			</div>
 			<Dashboard
 				setContentState={setContentState}

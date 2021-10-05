@@ -1,6 +1,22 @@
 .editor-container {
-  height: 90vh;
-  width: 50vw;
+  height: 100vh;
+  width: 70vw;
+  background: #e6e6e6;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  /* align-items: center; */
+
+
+
+}
+
+
+.design-area {
+  height: 86vh;
+  width: 54vh;
+  background-color: white;
   /* width: 54vw; */
   /* clip-path: inset(10px 20px 30px 40px); */
 
