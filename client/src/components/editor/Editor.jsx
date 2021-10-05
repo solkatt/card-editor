@@ -116,7 +116,13 @@ const Editor = () => {
 		console.log(selected)
 	}
 
-	const deleteLast = () => {}
+	const deleteLast = () => {
+		let newArr = contentState
+		newArr.pop()
+		setSelected(null)
+		setContentState(newArr)
+		console.log(contentState)
+	}
 	// let [objects, setObjects] = useState([])
 
 	return (

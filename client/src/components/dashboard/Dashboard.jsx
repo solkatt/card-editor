@@ -21,6 +21,7 @@ const Dashboard = (props) => {
 		selected,
 		handleText,
 		handleEdit,
+		deleteLast,
 	} = props
 
 	// useFrame((state, delta) => {
@@ -106,6 +107,8 @@ const Dashboard = (props) => {
 							setTextContent={setTextContent}
 						/>
 					)}
+
+				{selected && <button onClick={deleteLast}>delete</button>}
 			</div>
 		</>
 	)

@@ -33,7 +33,7 @@ const CardContent = (props) => {
 		// console.log('HEEJ', editSelection)
 		if (editSelection) handleSize(editSelection.value, editSelection.index)
 		if (textContent) handleText(textContent.value, textContent.index)
-	}, [editSelection, textContent])
+	}, [editSelection, textContent, contentState])
 
 	const handleSelection = (e) => {
 		e.stopPropagation()
