@@ -35,17 +35,6 @@ const CardContent = (props) => {
 		if (textContent) handleText(textContent.value, textContent.index)
 	}, [editSelection, textContent])
 
-	const addOnTop = (type, i) => {
-		if (type === 'PlaneGeometry') {
-			return 0.1 * i
-		}
-		if (type === 'InstancedBufferGeometry') {
-			return 0.1 * i
-		}
-		// console.log(type)
-		return 0.1 * i
-	}
-
 	const handleSelection = (e) => {
 		e.stopPropagation()
 
@@ -59,7 +48,7 @@ const CardContent = (props) => {
 			<>
 				<primitive
 					// onClick={(item) => handleSize(i)}
-					position={[0, 0, addOnTop(type, i)]}
+					position={[0, 0, 0.1 * i]}
 					// position={[0, 0, -10]}
 					// renderOrder={i}
 					key={i}

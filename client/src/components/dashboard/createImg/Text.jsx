@@ -49,7 +49,7 @@ export const CreateTextButton = (props) => {
 	let text = new Text()
 
 	// text.font = 'https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff'
-	text.text = 'Hello!'
+	text.text = 'Text'
 	text.fontSize = 3
 	text.color = 0x9966ff
 	// text.position.z = -1
