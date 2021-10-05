@@ -34,7 +34,7 @@ export default loadContent
 
 
 
-const createImg = (item) => {
+export const createImg = (item) => {
 
 	var planeGeom = new THREE.PlaneBufferGeometry(50, 50)
 
@@ -62,7 +62,7 @@ const createImg = (item) => {
 	mesh.material.side = THREE.DoubleSide
 
 	// mesh.position.set(2,1,1)
-	mesh.uuid = item.uuid
+	if (item.uuid) mesh.uuid = item.uuid
 
 	// mesh.name = "Bengt"
 
@@ -78,7 +78,7 @@ const createImg = (item) => {
 
 
 
-const createText = (item) => {
+export const createText = (item) => {
 
 
 	// console.log('NEWTEXT:', newText)

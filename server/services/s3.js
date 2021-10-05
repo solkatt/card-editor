@@ -16,8 +16,8 @@ const s3 = new aws.S3({
 
 
 
-const generateUploadURL = async () => {
-  const imageName = 'random image name'
+const generateUploadURL = async (props) => {
+  const imageName = 'koom'
 
   const params = {
     Bucket: bucketName,

@@ -78,7 +78,7 @@ const Dashboard = (props) => {
 				<CreateImgButton setContentState={setContentState} />
 				<CreateTextButton setContentState={setContentState} />
 				<Input setTextContent={setTextContent} />
-				<UploadButton />
+				<UploadButton setContentState={setContentState}/>
 				{!selected && ' Select to edit'}
 
 				{(selected && selected.geometry.type === 'PlaneGeometry') &&
