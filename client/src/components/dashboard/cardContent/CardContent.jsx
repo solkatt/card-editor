@@ -62,7 +62,7 @@ const CardContent = (props) => {
 	}
 
 	return contentState.map((item, i) => {
-
+		console.log('ITEM:',item)
 		const type = item.geometry.type
 		return (
 			<>

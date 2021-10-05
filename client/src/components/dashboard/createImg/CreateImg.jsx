@@ -55,7 +55,7 @@ const CreateImgButton = (props) => {
 	var tex = new THREE.TextureLoader().load(imgSrc, (tex) => {
 		tex.needsUpdate = true
 		mesh.scale.set(0.2, (tex.image.height / tex.image.width) * 0.2, 0.2)
-		mesh.position.set(0, 0, 0.1)
+		// mesh.position.set(0, 0, 0.1)
 	})
 
 	tex.encoding = THREE.sRGBEncoding
@@ -75,6 +75,9 @@ const CreateImgButton = (props) => {
 	mesh = new THREE.Mesh(planeGeom, material)
 
 	mesh.material.side = THREE.DoubleSide
+
+	mesh.position.set(2,1,1)
+	mesh.uuid = 'hej'
 
 	// mesh.name = "Bengt"
 
