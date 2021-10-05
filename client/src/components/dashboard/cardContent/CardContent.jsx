@@ -13,7 +13,6 @@ const CardContent = (props) => {
 	}, [props.items, contentState])
 
 	const handleSize = (value, i) => {
-		console.log(itemsRef.current[i].geometry)
 
 		if (itemsRef.current[i].geometry.type === 'PlaneGeometry') {
 			let imgHeight = itemsRef.current[i].material.map.image.height

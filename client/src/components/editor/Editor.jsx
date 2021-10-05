@@ -83,10 +83,9 @@ const Editor = () => {
 			},
 			{
 				type: 'InstancedBufferGeometry',
-				position: [1, 1, 0.1],
+				text: 'Hej från DB',
 				scale: [0.2, 0.3, 0.2],
-				url: 'https://images.unsplash.com/photo-1618824834789-eb5d98e150f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
-				uuid: '50A82A72-9E28-40B9-8B10-93CDBEDHEHEHE'
+				uuid: '50A82A72-9E28-40B9-8dsdCDBEDHEHEHE'
 			}
 		]
 
