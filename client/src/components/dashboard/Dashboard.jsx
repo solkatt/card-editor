@@ -8,6 +8,10 @@ import ImgControls from './controls/ImgControls'
 import TextControls from './controls/TextControls'
 import UploadButton from './upload/UploadBtn'
 
+///FAB
+import AddTextFAB from './upload/AddTextFAB'
+import AddImageFAB from './upload/AddImageFAB'
+
 const Dashboard = (props) => {
 	const {
 		setContentState,
@@ -65,7 +69,12 @@ const Dashboard = (props) => {
 				<CreateImgButton setContentState={setContentState} />
 				<CreateTextButton setContentState={setContentState} />
 				<Input setTextContent={setTextContent} />
-				<UploadButton setContentState={setContentState} />
+				{/* <UploadButton setContentState={setContentState} /> */}
+
+				<div className='add-buttons'>
+					<AddTextFAB setContentState={setContentState} />
+					<AddImageFAB setContentState={setContentState} />
+				</div>
 				{!selected && ' Select to edit'}
 
 				{selected && selected.geometry.type === 'PlaneGeometry' && (
