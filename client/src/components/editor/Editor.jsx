@@ -1,17 +1,14 @@
-import React, { useState, useRef, useEffect } from 'react'
+import React, { useState, useEffect } from 'react'
 
 //Three Fiber
-import { Canvas, extend, useFrame, useThree } from '@react-three/fiber'
+import { Canvas, extend, useThree } from '@react-three/fiber'
 
 // Three
 import { DragControls } from 'three/examples/jsm/controls/DragControls'
 
-
-
 import Dashboard from '../dashboard/Dashboard'
 
 import { Stats } from '@react-three/drei'
-
 
 import CardContent from '../dashboard/cardContent/CardContent'
 
@@ -24,16 +21,14 @@ extend({ DragControls, Text })
 
 ///////////////////////////////////////////////
 
-
-
-const Card = (props) => {
-	return (
-		<mesh {...props}>
-			<planeBufferGeometry args={[5.4, 8.6]} />
-			<meshBasicMaterial color='blue' />
-		</mesh>
-	)
-}
+// const Card = (props) => {
+// 	return (
+// 		<mesh {...props}>
+// 			<planeBufferGeometry args={[5.4, 8.6]} />
+// 			<meshBasicMaterial color='blue' />
+// 		</mesh>
+// 	)
+// }
 
 // const ex = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({ color: 'green'}))
 
@@ -72,33 +67,32 @@ const Editor = () => {
 				position: [1, 1, 0.1],
 				scale: [0.2, 0.3, 0.2],
 				url: 'https://images.unsplash.com/photo-1618824834789-eb5d98e150f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
-				uuid: '50A82A72-9E28-40B9-8B10-93CDBED6292B'
+				uuid: '50A82A72-9E28-40B9-8B10-93CDBED6292B',
 			},
 			{
 				type: 'PlaneGeometry',
 				position: [1, 1, 0.1],
 				scale: [0.2, 0.3, 0.2],
 				url: 'https://images.unsplash.com/photo-1618824834789-eb5d98e150f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
-				uuid: '50A82A72-9E28-40B9-8B10-93CDBEDHEHEHE'
+				uuid: '50A82A72-9E28-40B9-8B10-93CDBEDHEHEHE',
 			},
 			{
 				type: 'InstancedBufferGeometry',
 				text: 'Hej från DB',
 				scale: [0.2, 0.3, 0.2],
-				uuid: '50A82A72-9E28-40B9-8dsdCDBEDHEHEHE'
-			}
-		]
-
+				uuid: '50A82A72-9E28-40B9-8dsdCDBEDHEHEHE',
+			},
+		],
 	}
 
 	useEffect(() => {
-		const meshes = loadContent({dbData: mockDB})
+		const meshes = loadContent({ dbData: mockDB })
 
 		console.log(meshes)
 		setContentState(meshes)
-	},[])
+	}, [])
 
-	//TO DO 
+	//TO DO
 	// Convert DB.data to meshes
 	// Set Contenstate to meshes
 
@@ -122,9 +116,7 @@ const Editor = () => {
 		console.log(selected)
 	}
 
-	const deleteLast = () => {
-
-	}
+	const deleteLast = () => {}
 	// let [objects, setObjects] = useState([])
 
 	return (
@@ -135,8 +127,12 @@ const Editor = () => {
 					colorManagement
 					// background={'black'}
 					orthographic
-					camera={{ zoom: 50, position: [0, 0, 10], near: 0.0001, far: 1000 }}
-
+					camera={{
+						zoom: 50,
+						position: [0, 0, 10],
+						near: 0.0001,
+						far: 1000,
+					}}
 				>
 					{/* <Box position={[0, 0, 0]} /> */}
 					{/* <ResponsiveText textContent={textContent} /> */}
@@ -164,7 +160,6 @@ const Editor = () => {
 				handleEdit={handleEdit}
 				handleText={handleText}
 				deleteLast={deleteLast}
-
 			/>
 		</>
 	)

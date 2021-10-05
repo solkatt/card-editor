@@ -1,7 +1,6 @@
-import React, { useRef, useState, useMemo } from 'react'
-import * as THREE from 'three'
+import React from 'react'
 
-import { Canvas, useThree, extend } from '@react-three/fiber'
+import { extend } from '@react-three/fiber'
 // import { Text } from '@react-three/drei'
 import { Text } from 'troika-three-text'
 

@@ -1,41 +1,25 @@
 import * as THREE from 'three'
-import {
-	Text
-} from 'troika-three-text'
-import {
-	extend
-} from '@react-three/fiber'
+import { Text } from 'troika-three-text'
+import { extend } from '@react-three/fiber'
 
 extend({
-	Text
+	Text,
 })
 
 const loadContent = (props) => {
-
-	const {
-		dbData
-	} = props
-
-
+	const { dbData } = props
 
 	return dbData.designContent.map((item, i) => {
-	
 		if (item.type === 'PlaneGeometry') return createImg(item)
 		if (item.type === 'InstancedBufferGeometry') return createText(item)
 
-
-
+		return ''
 	})
-
 }
 
 export default loadContent
 
-
-
-
 export const createImg = (item) => {
-
 	var planeGeom = new THREE.PlaneBufferGeometry(50, 50)
 
 	var imgSrc = item.url
@@ -56,7 +40,6 @@ export const createImg = (item) => {
 		map: tex,
 	})
 
-
 	mesh = new THREE.Mesh(planeGeom, material)
 
 	mesh.material.side = THREE.DoubleSide
@@ -66,21 +49,10 @@ export const createImg = (item) => {
 
 	// mesh.name = "Bengt"
 
-	return (
-
-		mesh
-
-	)
-
-
-
+	return mesh
 }
 
-
-
 export const createText = (item) => {
-
-
 	// console.log('NEWTEXT:', newText)
 	let text = new Text()
 
@@ -98,20 +70,10 @@ export const createText = (item) => {
 	// text.material.depthTest = false
 	// text.anchorY = 'center'
 
-	return (
-		text
-	)
+	return text
 }
 
-
-
-
-
-
-
 // const createImg = (designContent) => {
-
-
 
 // 	//////////
 
@@ -141,7 +103,6 @@ export const createText = (item) => {
 // 		map: tex,
 // 	})
 
-
 // 	mesh = new THREE.Mesh(planeGeom, material)
 
 // 	mesh.material.side = THREE.DoubleSide
@@ -157,6 +118,5 @@ export const createText = (item) => {
 
 // 		)
 // 	})
-
 
 // }

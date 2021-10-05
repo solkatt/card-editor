@@ -1,10 +1,7 @@
-
-import React, { useState, useRef, useEffect } from 'react'
-
-
+import React, { useRef, useEffect } from 'react'
 
 const CardContent = (props) => {
-	let { contentState, setSelected, editSelection, selected, scale, textContent } = props
+	let { contentState, setSelected, editSelection, textContent } = props
 
 	const itemsRef = useRef([])
 
@@ -13,7 +10,6 @@ const CardContent = (props) => {
 	}, [props.items, contentState])
 
 	const handleSize = (value, i) => {
-
 		if (itemsRef.current[i].geometry.type === 'PlaneGeometry') {
 			let imgHeight = itemsRef.current[i].material.map.image.height
 			let imgWidth = itemsRef.current[i].material.map.image.width
@@ -31,8 +27,6 @@ const CardContent = (props) => {
 
 	const handleText = (value, i) => {
 		itemsRef.current[i].text = value
-
-		console.log(textContent.value)
 	}
 
 	useEffect(() => {
@@ -41,7 +35,6 @@ const CardContent = (props) => {
 		if (textContent) handleText(textContent.value, textContent.index)
 	}, [editSelection, textContent])
 
-
 	const addOnTop = (type, i) => {
 		if (type === 'PlaneGeometry') {
 			return 0.1 * i
@@ -49,19 +42,18 @@ const CardContent = (props) => {
 		if (type === 'InstancedBufferGeometry') {
 			return 0.1 * i
 		}
-		console.log(type)
+		// console.log(type)
 		return 0.1 * i
 	}
 
-
- const handleSelection = (e) => {
+	const handleSelection = (e) => {
 		e.stopPropagation()
 
 		setSelected(e.object)
 	}
 
 	return contentState.map((item, i) => {
-		console.log('ITEM:',item)
+		// console.log('ITEM:', item)
 		const type = item.geometry.type
 		return (
 			<>
@@ -69,7 +61,7 @@ const CardContent = (props) => {
 					// onClick={(item) => handleSize(i)}
 					position={[0, 0, addOnTop(type, i)]}
 					// position={[0, 0, -10]}
-				// renderOrder={i}
+					// renderOrder={i}
 					key={i}
 					object={item}
 					ref={(el) => (itemsRef.current[i] = el)}

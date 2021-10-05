@@ -1,68 +1,61 @@
 import axios from 'axios'
-import * as THREE from 'three'
-import {createImg} from '../../editor/loadContent'
+import { createImg } from '../../editor/loadContent'
 
 const UploadButton = (props) => {
+	const { setContentState } = props
 
-const {setContentState} = props
+	const handleUpload = async (e) => {
+		const file = e.target.files[0]
 
-  const handleUpload = async (e) => {
-    const file = e.target.files[0]
+		// return axios.get('http://localhost:5000/s3Url').then((res) => res.data)
+		const { url } = await getSecureUrl()
+		console.log(url)
 
-    // return axios.get('http://localhost:5000/s3Url').then((res) => res.data)
-    const {url} = await getSecureUrl()
-    console.log(url)
+		const headers = {
+			'Content-Type': 'multipart/form-data',
+		}
 
-    const headers = {
-      'Content-Type': 'multipart/form-data',
-    }
-  
-     axios.put(url, file, headers).then(res => console.log(res.data))
-  
-     let imageUrl = url.split('?')[0]
-     console.log(imageUrl)
+		await axios.put(url, file, headers).then((res) => console.log(res.data))
+		let imageUrl = url.split('?')[0]
 
+		console.log(imageUrl)
 
-    const item = {
-      type: 'PlaneGeometry',
-      url: imageUrl
-    }
+		const item = {
+			type: 'PlaneGeometry',
+			url: imageUrl,
+		}
+		const mesh = createImg(item)
+		setContentState((prevState) => [...prevState, mesh])
+	}
 
-    const mesh = createImg(item)
+	const getSecureUrl = async () => {
+		return axios.get('http://localhost:5000/s3Url').then((res) => res.data)
+	}
 
-    setContentState((prevState) => [...prevState, mesh])
+	return (
+		<>
+			<input
+				type='file'
+				accept='image/*'
+				id='actual-btn'
+				style={{ display: 'none' }}
+				onChange={handleUpload}
+			/>
 
-
-  }
-
-  const getSecureUrl = async () => {
-    return axios.get('http://localhost:5000/s3Url').then((res) => res.data)
-  }
-
-  return (
-    <>
-      <input
-        type="file"
-        accept="image/*"
-        id="actual-btn"
-        style={{ display: 'none' }}
-        onChange={handleUpload}
-      />
-
-
-      <label htmlFor="actual-btn"
-        style={{
-          background: 'orange',
-          border: '2px solid white'
-        }}
-      >Choose File</label>
-
-    </>)
+			<label
+				htmlFor='actual-btn'
+				style={{
+					background: 'orange',
+					border: '2px solid white',
+				}}
+			>
+				Choose File
+			</label>
+		</>
+	)
 }
 
 export default UploadButton
-
-
 
 // const CreateImgButton = (props) => {
 // 	let { setContentState } = props
@@ -96,7 +89,6 @@ export default UploadButton
 
 // 	// material.depthTest = false
 
-
 // 	// material.toneMapped = false
 
 // 	mesh = new THREE.Mesh(planeGeom, material)
@@ -116,4 +108,3 @@ export default UploadButton
 // 		</button>
 // 	)
 // }
-
