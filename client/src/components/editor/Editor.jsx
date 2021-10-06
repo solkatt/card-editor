@@ -14,6 +14,8 @@ import CardContent from '../dashboard/cardContent/CardContent'
 
 import loadContent from './loadContent'
 
+import axios from 'axios'
+
 // Css
 import './Editor.css'
 
@@ -59,6 +61,8 @@ const Editor = () => {
 
 	const [editSelection, setEditSelection] = useState()
 
+	const [data, setData] = useState({})
+
 	const mockDB = {
 		designName: 'DB Design Name',
 		designContent: [
@@ -85,8 +89,15 @@ const Editor = () => {
 		],
 	}
 
+	const loadData = async () => {
+		const res = await axios.get('http://localhost:5000/editor/design/:id')
+		setData(await res.data)
+	}
+
 	useEffect(() => {
 		const meshes = loadContent({ dbData: mockDB })
+		loadData()
+		console.log('DATA:', data)
 
 		console.log(meshes)
 		setContentState(meshes)
@@ -117,11 +128,26 @@ const Editor = () => {
 	}
 
 	const deleteLast = () => {
+		if (contentState.length === 0) {
+			return setContentState([])
+		}
 		let newArr = contentState
 		newArr.pop()
 		setSelected(null)
 		setContentState(newArr)
 		console.log(contentState)
+	}
+
+	const saveDesignToDB = () => {
+		const newArr = contentState.map((item) => {
+			return {
+				type: item.geometry.type,
+				// url: item.material.map.img.currentSrc,
+				position: item.position,
+				uuid: item.uuid,
+			}
+		})
+		console.log('save to db', newArr)
 	}
 	// let [objects, setObjects] = useState([])
 
@@ -168,6 +194,7 @@ const Editor = () => {
 				handleEdit={handleEdit}
 				handleText={handleText}
 				deleteLast={deleteLast}
+				saveDesignToDB={saveDesignToDB}
 			/>
 		</>
 	)

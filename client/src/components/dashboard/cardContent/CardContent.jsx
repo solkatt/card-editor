@@ -31,8 +31,10 @@ const CardContent = (props) => {
 
 	useEffect(() => {
 		// console.log('HEEJ', editSelection)
-		if (editSelection) handleSize(editSelection.value, editSelection.index)
-		if (textContent) handleText(textContent.value, textContent.index)
+		if (editSelection && contentState.length >= 1)
+			handleSize(editSelection.value, editSelection.index)
+		if (textContent && contentState.length >= 1)
+			handleText(textContent.value, textContent.index)
 	}, [editSelection, textContent, contentState])
 
 	const handleSelection = (e) => {

@@ -12,6 +12,9 @@ import UploadButton from './upload/UploadBtn'
 import AddTextFAB from './upload/AddTextFAB'
 import AddImageFAB from './upload/AddImageFAB'
 
+// CRUD
+import CreateDesign from '../CreateDesign'
+
 const Dashboard = (props) => {
 	const {
 		setContentState,
@@ -22,6 +25,7 @@ const Dashboard = (props) => {
 		handleText,
 		handleEdit,
 		deleteLast,
+		saveDesignToDB,
 	} = props
 
 	// useFrame((state, delta) => {
@@ -109,6 +113,8 @@ const Dashboard = (props) => {
 					)}
 
 				{selected && <button onClick={deleteLast}>delete</button>}
+				<button onClick={saveDesignToDB}>save</button>
+				<CreateDesign contentState={contentState} />
 			</div>
 		</>
 	)

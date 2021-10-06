@@ -1,15 +1,16 @@
-
-import './App.css';
+import './App.css'
 import Create from './components/Create'
-import Editor from './components/editor/Editor';
+import CreateDesign from './components/CreateDesign'
+import Editor from './components/editor/Editor'
 
 function App() {
-  return (
-    <div className="App">
-    {/* <Create /> */}
-    <Editor />
-    </div>
-  );
+	return (
+		<div className='App'>
+			{/* <Create /> */}
+			{/* <CreateDesign /> */}
+			<Editor />
+		</div>
+	)
 }
 
-export default App;
+export default App
