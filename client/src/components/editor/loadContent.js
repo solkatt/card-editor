@@ -7,9 +7,9 @@ extend({
 })
 
 const loadContent = (props) => {
-	const { dbData } = props
+	const { design } = props
 
-	return dbData.designContent.map((item, i) => {
+	return design.designContent.map((item, i) => {
 		if (item.type === 'PlaneGeometry') return createImg(item)
 		if (item.type === 'InstancedBufferGeometry') return createText(item)
 

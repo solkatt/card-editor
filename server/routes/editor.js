@@ -12,6 +12,7 @@ const EditorCtrl = require('../controllers/editorCtrl')
 ////
 
 router.post('/editor/design/add', EditorCtrl.createDesign)
+router.get('/editor/design/:id', EditorCtrl.getDesignById)
 
 //////
 

@@ -16,6 +16,10 @@ import loadContent from './loadContent'
 
 import axios from 'axios'
 
+import { Redirect, useParams } from 'react-router-dom'
+
+import api from '../../api'
+
 // Css
 import './Editor.css'
 
@@ -34,7 +38,7 @@ extend({ DragControls, Text })
 
 // const ex = new THREE.Mesh(new THREE.BoxGeometry(1, 1, 1), new THREE.MeshBasicMaterial({ color: 'green'}))
 
-const Scene = (props) => {
+const EnableDragCtrls = (props) => {
 	let { contentState } = props
 
 	const {
@@ -50,7 +54,7 @@ const Scene = (props) => {
 	)
 }
 
-const Editor = () => {
+const Editor = (props) => {
 	const [contentState, setContentState] = useState([])
 
 	const [textContent, setTextContent] = useState('')
@@ -62,6 +66,8 @@ const Editor = () => {
 	const [editSelection, setEditSelection] = useState()
 
 	const [data, setData] = useState({})
+
+	const { id } = useParams()
 
 	const mockDB = {
 		designName: 'DB Design Name',
@@ -89,19 +95,38 @@ const Editor = () => {
 		],
 	}
 
+	useEffect(() => {
+		// const meshes = loadContent({ dbData: mockDB })
+		// loadData()
+		loadDesign(id)
+
+		// setContentState(meshes)
+
+		return () => {
+			console.log('fail')
+		}
+	}, [])
+
 	const loadData = async () => {
+		// const res = await axios.get('http://localhost:5000/editor/design/:id')
 		const res = await axios.get('http://localhost:5000/editor/design/:id')
 		setData(await res.data)
 	}
 
-	useEffect(() => {
-		const meshes = loadContent({ dbData: mockDB })
-		loadData()
-		console.log('DATA:', data)
+	const loadDesign = async (id) => {
+		// setState({isLoading: true})
+		await api
+			.getDesignById(id)
+			.then((design) => {
+				console.log('FROM DB', design.data.data)
+				const meshes = loadContent({ design: design.data.data })
+				setContentState(meshes)
 
-		console.log(meshes)
-		setContentState(meshes)
-	}, [])
+				// setState({isLoading: false})
+			})
+			.catch((err) => console.log(err))
+		console.log(contentState)
+	}
 
 	//TO DO
 	// Convert DB.data to meshes
@@ -179,7 +204,7 @@ const Editor = () => {
 							editSelection={editSelection}
 							textContent={textContent}
 						/>
-						<Scene contentState={contentState} />
+						<EnableDragCtrls contentState={contentState} />
 						<Stats />
 					</Canvas>
 				</div>

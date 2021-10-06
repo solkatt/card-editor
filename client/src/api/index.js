@@ -11,9 +11,11 @@ const api = axios.create({
 })
 
 export const addDesign = (payload) => api.post(`/editor/design/add`, payload)
+export const getDesignById = (id) => api.get(`/editor/design/${id}`)
 
 const apis = {
 	addDesign,
+	getDesignById,
 }
 
 export default apis
