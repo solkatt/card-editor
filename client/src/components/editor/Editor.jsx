@@ -206,6 +206,7 @@ return (
 				deleteLast={deleteLast}
 				saveDesignToDB={saveDesignToDB}
 				designName={designName}
+				setSelected={setSelected}
 			/>
 		</>
 	)

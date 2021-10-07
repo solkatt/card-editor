@@ -15,7 +15,7 @@ const Input = styled('input')({
 })
 
 export default function AddImageFAB(props) {
-	const { setContentState } = props
+	const { setContentState, setSelected } = props
 
 	const handleUpload = async (e) => {
 		const file = e.target.files[0]
@@ -39,6 +39,8 @@ export default function AddImageFAB(props) {
 		}
 		const mesh = createImg(item)
 		setContentState((prevState) => [...prevState, mesh])
+		setSelected(mesh)
+
 	}
 
 	const getSecureUrl = async () => {

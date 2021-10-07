@@ -4,19 +4,21 @@ import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
 
 export default function ScaleSlider(props) {
-	const { selected, handleChange, max } = props
+	const { selected, handleChange, max, defaultValue } = props
 
 
+console.log('selected value:', defaultValue)
 
 	return (
 		<>
-			<h2>{selected.scale.x}</h2>
+
 
 			<Box width={300}>
 				<Slider
-  			
+
 					size='small'
-					value={props.selected.scale.x ? props.selected.scale.x  : ""}
+					defaultValue={selected.scale.x}
+					value={selected.scale.x}
 					aria-label='Small'
 					valueLabelDisplay='auto'
 					min={0.01}

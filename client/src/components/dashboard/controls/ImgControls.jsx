@@ -11,7 +11,7 @@ const ImgControls = (props) => {
 			<div className='slidecontainer'>
 				<h2>{scale}</h2>
 
-				<ScaleSlider selected={selected} handleChange={handleChange} max={0.1} />
+				<ScaleSlider selected={selected} handleChange={handleChange} max={0.1} defaultValue={0.05} />
 			</div>
 		</div>
 	)

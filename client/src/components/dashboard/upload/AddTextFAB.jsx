@@ -11,7 +11,7 @@ import { Text } from 'troika-three-text'
 extend({ Text })
 
 export default function AddTextFAB(props) {
-	let { setContentState } = props
+	let { setContentState, setSelected } = props
 
 	const handleAddText = () => {
 		let text = new Text()
@@ -31,6 +31,7 @@ export default function AddTextFAB(props) {
 		text.sync()
 
 		setContentState((prevState) => [...prevState, text])
+		setSelected(text)
 	}
 
 	return (

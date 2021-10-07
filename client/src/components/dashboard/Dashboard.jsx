@@ -26,7 +26,7 @@ const Dashboard = (props) => {
 		handleText,
 		handleEdit,
 		deleteLast,
-		saveDesignToDB,
+		setSelected,
 		designName
 	} = props
 
@@ -88,8 +88,8 @@ const Dashboard = (props) => {
 				{/* <UploadButton setContentState={setContentState} /> */}
 
 				<div className='add-buttons'>
-					<AddTextFAB setContentState={setContentState} />
-					<AddImageFAB setContentState={setContentState} />
+					<AddTextFAB setContentState={setContentState} setSelected={setSelected}/>
+					<AddImageFAB setContentState={setContentState} setSelected={setSelected}/>
 				</div>
 				{!selected && ' Select to edit'}
 
