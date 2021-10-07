@@ -5,10 +5,15 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+import EditorState from './context/EditorState'
+
+
 ReactDOM.render(
   <React.StrictMode>
     <Router>
+    <EditorState>
     <App />
+    </EditorState>
     </Router>
   </React.StrictMode>,
   document.getElementById('root')

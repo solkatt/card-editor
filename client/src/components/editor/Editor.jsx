@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef, useContext } from 'react'
 
 //Three Fiber
 import { Canvas, extend, useThree } from '@react-three/fiber'
@@ -19,6 +19,9 @@ import axios from 'axios'
 import { Redirect, useParams } from 'react-router-dom'
 
 import api from '../../api'
+
+import EditorContext from '../../context/EditorContext'
+
 
 // Css
 import './Editor.css'
@@ -55,7 +58,10 @@ const EnableDragCtrls = (props) => {
 }
 
 const Editor = (props) => {
-	const [contentState, setContentState] = useState([])
+
+	const { loadDesign, contentState, setContentState } = useContext(EditorContext)
+
+	// const [contentState, setContentState] = useState([])
 	const [designName, setDesignName] = useState('')
 
 	const [textContent, setTextContent] = useState('')
@@ -66,40 +72,15 @@ const Editor = (props) => {
 
 	const [editSelection, setEditSelection] = useState()
 
-	const [data, setData] = useState({})
 
 	const { id } = useParams()
 
 
 	useEffect(() => {
-		// const meshes = loadContent({ dbData: mockDB })
 		loadDesign(id)
-
-		// setContentState(meshes)
-
-	
 	}, [id])
 
-	
-	const loadDesign = async (id) => {
-		// setState({isLoading: true})
-		await api
-			.getDesignById(id)
-			.then((design) => {
-				console.log('FROM DB', design.data.data)
-				const meshes = loadContent({ design: design.data.data })
-				setContentState(meshes)
-				setDesignName(design.data.data.designName)
 
-				// setState({isLoading: false})
-			})
-			.catch((err) => console.log(err))
-		console.log(contentState)
-	}
-
-	//TO DO
-	// Convert DB.data to meshes
-	// Set Contenstate to meshes
 
 	const handleEdit = (value, index) => {
 		// console.log(value, index)
@@ -113,13 +94,7 @@ const Editor = (props) => {
 		setTextContent({ value: value, index: index })
 	}
 
-	const handleSelectObj = (e) => {
-		e.stopPropagation()
-		// console.log('handleSelect', e.eventObject)
-		// console.log('handleSelect', e.object.uuid)
-		setSelected(e.object)
-		console.log(selected)
-	}
+
 
 	const deleteLast = () => {
 		if (contentState.length === 0) {
@@ -132,18 +107,8 @@ const Editor = (props) => {
 		console.log(contentState)
 	}
 
-	const saveDesignToDB = () => {
-		const newArr = contentState.map((item) => {
-			return {
-				type: item.geometry.type,
-				// url: item.material.map.img.currentSrc,
-				position: item.position,
-				uuid: item.uuid,
-			}
-		})
-		console.log('save to db', newArr)
-	}
-	// let [objects, setObjects] = useState([])
+
+
 
 	const containerRef = useRef()
 
@@ -204,7 +169,6 @@ return (
 				handleEdit={handleEdit}
 				handleText={handleText}
 				deleteLast={deleteLast}
-				saveDesignToDB={saveDesignToDB}
 				designName={designName}
 				setSelected={setSelected}
 			/>
