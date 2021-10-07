@@ -10,6 +10,7 @@ const CardContent = (props) => {
 	}, [props.items, contentState])
 
 	const handleSize = (value, i) => {
+		if (!itemsRef.current[i]) return
 		if (itemsRef.current[i].geometry.type === 'PlaneGeometry') {
 			let imgHeight = itemsRef.current[i].material.map.image.height
 			let imgWidth = itemsRef.current[i].material.map.image.width
@@ -17,6 +18,7 @@ const CardContent = (props) => {
 			itemsRef.current[i].scale.y = (imgHeight / imgWidth) * value
 			itemsRef.current[i].scale.z = value
 		} else {
+			if (!itemsRef.current[i]) return
 			itemsRef.current[i].scale.x = value
 			itemsRef.current[i].scale.y = value
 			itemsRef.current[i].scale.z = value
@@ -24,6 +26,8 @@ const CardContent = (props) => {
 	}
 
 	const handleText = (value, i) => {
+		if (!itemsRef.current[i]) return
+
 		itemsRef.current[i].text = value
 	}
 

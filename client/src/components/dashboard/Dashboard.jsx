@@ -22,9 +22,9 @@ const Dashboard = (props) => {
 		selected,
 		handleText,
 		handleEdit,
-		deleteLast,
 		setSelected,
 		designName,
+		deleteDesignObject,
 	} = useContext(EditorContext)
 
 	// useFrame((state, delta) => {
@@ -108,7 +108,11 @@ const Dashboard = (props) => {
 						/>
 					)}
 
-				{selected && <button onClick={deleteLast}>delete</button>}
+				{selected && (
+					<button onClick={() => deleteDesignObject(selected.uuid)}>
+						delete w/ index
+					</button>
+				)}
 				{/* <button onClick={saveDesignToDB}>save</button> */}
 				{/* <CreateDesign contentState={contentState} /> */}
 				<SaveDesignBtn contentState={contentState} />

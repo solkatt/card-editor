@@ -35,15 +35,15 @@ const EditorState = ({ children }) => {
 		console.log(contentState)
 	}
 
-	const deleteLast = () => {
+	const deleteDesignObject = (uuid) => {
 		if (contentState.length === 0) {
 			return setContentState([])
 		}
-		let newArr = contentState
-		newArr.pop()
+
+		const newContent = contentState.filter((item) => item.uuid !== uuid)
+
 		setSelected(null)
-		setContentState(newArr)
-		console.log(contentState)
+		setContentState(newContent)
 	}
 
 	const handleText = (value, index) => {
@@ -62,7 +62,6 @@ const EditorState = ({ children }) => {
 		<EditorContext.Provider
 			value={{
 				loadDesign,
-				deleteLast,
 				contentState,
 				setContentState,
 				designName,
@@ -78,6 +77,7 @@ const EditorState = ({ children }) => {
 				handleEdit,
 				createImg,
 				createText,
+				deleteDesignObject,
 			}}
 		>
 			{children}
