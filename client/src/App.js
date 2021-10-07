@@ -2,7 +2,7 @@ import './App.css'
 import Create from './components/Create'
 import CreateDesign from './components/CreateDesign'
 import Editor from './components/editor/Editor'
-
+import Landing from './components/Landing/Landing'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 function App() {
@@ -10,7 +10,7 @@ function App() {
 		<div className='App'>
 			<Router>
 				<Switch>
-					{/* <Route path='/' exact component={Landing} /> */}
+					<Route path='/' exact component={Landing} />
 					<Route path='/editor/design/:id' exact component={Editor} />
 				</Switch>
 			</Router>
