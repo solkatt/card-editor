@@ -37,7 +37,7 @@ export const createImg = (item, i) => {
 				item.scale.z
 			)
 		} else {
-			mesh.scale.set(0.2, (tex.image.height / tex.image.width) * 0.2, 0.2)
+			mesh.scale.set(0.02, (tex.image.height / tex.image.width) * 0.02, 0.02)
 		}
 		// imageRatio = tex.image.height / tex.image.width
 		// mesh.position.set(0, 0, 0.1)

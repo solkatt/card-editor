@@ -11,7 +11,7 @@ const TextControls = (props) => {
 			<span>Index: {objIndex} </span>
 
 			<div className='slidecontainer'>
-				<ScaleSlider selected={selected} handleChange={handleChange} />
+				<ScaleSlider selected={selected} handleChange={handleChange} max={0.2}/>
 				<input
 					style={{
 						height: '4rem',

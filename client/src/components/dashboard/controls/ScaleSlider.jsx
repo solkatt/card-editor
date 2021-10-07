@@ -4,7 +4,7 @@ import Box from '@mui/material/Box'
 import Slider from '@mui/material/Slider'
 
 export default function ScaleSlider(props) {
-	const { selected, handleChange } = props
+	const { selected, handleChange, max } = props
 
 
 
@@ -20,7 +20,7 @@ export default function ScaleSlider(props) {
 					aria-label='Small'
 					valueLabelDisplay='auto'
 					min={0.01}
-					max={0.2}
+					max={max}
 					step={0.001}
 					onChange={(e) => handleChange(e)}
 				/>
