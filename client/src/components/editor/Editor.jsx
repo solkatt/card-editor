@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 
 //Three Fiber
 import { Canvas, extend, useThree } from '@react-three/fiber'
@@ -176,10 +176,24 @@ const Editor = (props) => {
 	}
 	// let [objects, setObjects] = useState([])
 
+	const containerRef = useRef()
+
+	const AspectGroup = (props) => {
+		const { viewport } = useThree()
+		const {clientHeight, clientWidth} = containerRef.current
+
+
+return (
+	<group scale={[clientWidth / 54, clientHeight / 86, 1]}>
+		{props.children}
+	</group>
+)
+	}
+
 	return (
 		<>
 			<div className='editor-container'>
-				<div className='design-area'>
+				<div ref={containerRef}className='design-area'>
 					{/* <h2>{textContent.value}</h2> */}
 					<Canvas
 						colorManagement
@@ -196,6 +210,7 @@ const Editor = (props) => {
 						{/* <ResponsiveText textContent={textContent} /> */}
 
 						{/* <Card /> */}
+						<AspectGroup>
 						<CardContent
 							contentState={contentState}
 							setSelected={setSelected}
@@ -204,6 +219,7 @@ const Editor = (props) => {
 							editSelection={editSelection}
 							textContent={textContent}
 						/>
+						</AspectGroup>
 						<EnableDragCtrls contentState={contentState} />
 						<Stats />
 					</Canvas>
