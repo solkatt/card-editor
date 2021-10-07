@@ -45,12 +45,13 @@ const CardContent = (props) => {
 
 	return contentState.map((item, i) => {
 		// console.log('ITEM:', item)
-		const type = item.geometry.type
+		// const type = item.geometry.type
+
 		return (
 			<>
 				<primitive
 					// onClick={(item) => handleSize(i)}
-					position={[0, 0, 0.1 * i]}
+					position={[item.position.x, item.position.y, 0.1 * i]}
 					// position={[0, 0, -10]}
 					// renderOrder={i}
 					key={i}

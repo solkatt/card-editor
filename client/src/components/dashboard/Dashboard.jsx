@@ -7,6 +7,7 @@ import CreateImgButton from '../dashboard/createImg/CreateImg'
 import ImgControls from './controls/ImgControls'
 import TextControls from './controls/TextControls'
 import UploadButton from './upload/UploadBtn'
+import SaveDesignBtn from './SaveDesignBtn'
 
 ///FAB
 import AddTextFAB from './upload/AddTextFAB'
@@ -70,7 +71,7 @@ const Dashboard = (props) => {
 	return (
 		<>
 			<div className='dashboard'>
-				<h2>Design Name</h2>
+				<h2></h2>
 
 				{selected && selected.geometry.type === 'PlaneGeometry' && (
 					<h2>Bild</h2>
@@ -114,7 +115,8 @@ const Dashboard = (props) => {
 
 				{selected && <button onClick={deleteLast}>delete</button>}
 				<button onClick={saveDesignToDB}>save</button>
-				<CreateDesign contentState={contentState} />
+				{/* <CreateDesign contentState={contentState} /> */}
+				<SaveDesignBtn contentState={contentState} />
 			</div>
 		</>
 	)

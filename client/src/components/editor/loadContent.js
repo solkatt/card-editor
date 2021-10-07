@@ -44,7 +44,7 @@ export const createImg = (item) => {
 
 	mesh.material.side = THREE.DoubleSide
 
-	// mesh.position.set(2,1,1)
+	mesh.position.set(item.position)
 	if (item.uuid) mesh.uuid = item.uuid
 
 	// mesh.name = "Bengt"
@@ -60,7 +60,10 @@ export const createText = (item) => {
 	text.text = item.text
 	text.fontSize = 3
 	text.color = 0x9966ff
-	// text.position.z = -1
+	// text.position.x = item.position.x
+	// text.position.y = item.position.y
+	text.position.z = -1
+
 	// text.material = new THREE.MeshBasicMaterial()
 	// text.materialType = 'MeshBasicMaterial'
 	text.textAlign = 'justify'

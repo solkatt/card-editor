@@ -1,11 +1,11 @@
 const mongoose = require('mongoose')
 
-const designContent = require('./designContentModel').schema
+const DesignContent = require('./designContentModel').schema
 
 const schema = new mongoose.Schema(
 	{
 		designName: String,
-		designContent: [designContent],
+		designContent: [DesignContent],
 	},
 	{ timestamps: true },
 	{ collection: 'designs' }

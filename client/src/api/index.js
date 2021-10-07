@@ -12,10 +12,13 @@ const api = axios.create({
 
 export const addDesign = (payload) => api.post(`/editor/design/add`, payload)
 export const getDesignById = (id) => api.get(`/editor/design/${id}`)
+export const updateDesign = (id, payload) =>
+	api.put(`/editor/design/${id}`, payload)
 
 const apis = {
 	addDesign,
 	getDesignById,
+	updateDesign,
 }
 
 export default apis
