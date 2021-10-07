@@ -1,3 +1,5 @@
+import { useContext } from 'react'
+
 import Input from '../Input'
 import { CreateTextButton } from './createImg/Text'
 import './Dashboard.css'
@@ -16,6 +18,9 @@ import AddImageFAB from './upload/AddImageFAB'
 // CRUD
 import CreateDesign from '../CreateDesign'
 
+// Context
+import EditorContext from '../../context/EditorContext'
+
 const Dashboard = (props) => {
 	const {
 		setContentState,
@@ -27,8 +32,8 @@ const Dashboard = (props) => {
 		handleEdit,
 		deleteLast,
 		setSelected,
-		designName
-	} = props
+		designName,
+	} = useContext(EditorContext)
 
 	// useFrame((state, delta) => {
 	// 	// mesh.current.rotation.x += 0.01
@@ -36,15 +41,6 @@ const Dashboard = (props) => {
 
 	// console.log('selected:', selected.uuid)
 	console.log('contentState', contentState)
-
-	// useEffect(() => {
-	// 	if (selected) {
-	// 		let objIndex = contentState.findIndex(
-	// 			(obj) => obj.uuid == selected.uuid
-	// 		)
-	// 		console.log('selected:', objIndex)
-	// 	}
-	// })
 
 	let objIndex
 
@@ -88,8 +84,14 @@ const Dashboard = (props) => {
 				{/* <UploadButton setContentState={setContentState} /> */}
 
 				<div className='add-buttons'>
-					<AddTextFAB setContentState={setContentState} setSelected={setSelected}/>
-					<AddImageFAB setContentState={setContentState} setSelected={setSelected}/>
+					<AddTextFAB
+						setContentState={setContentState}
+						setSelected={setSelected}
+					/>
+					<AddImageFAB
+						setContentState={setContentState}
+						setSelected={setSelected}
+					/>
 				</div>
 				{!selected && ' Select to edit'}
 

@@ -1,18 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState } from 'react'
 
 import EditorContext from './EditorContext'
 import api from '../api'
 
-import convertToMesh from './convertToMesh'; 
+import convertToMesh from './convertToMesh'
 
-const EditorState = ({children}) => { 
-
+const EditorState = ({ children }) => {
 	const [contentState, setContentState] = useState([])
 	const [designName, setDesignName] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
+	const [textContent, setTextContent] = useState('')
+	const [scale, setScale] = useState(1)
+	const [selected, setSelected] = useState()
+	const [editSelection, setEditSelection] = useState()
 
-
-  const loadDesign = async (id) => {
+	const loadDesign = async (id) => {
 		setIsLoading(true)
 
 		await api
@@ -26,22 +28,59 @@ const EditorState = ({children}) => {
 				setIsLoading(false)
 			})
 			.catch((err) => {
-        console.log(err)
-        setIsLoading(false)      
-      })
+				console.log(err)
+				setIsLoading(false)
+			})
 
 		console.log(contentState)
 	}
 
-  return (
+	const deleteLast = () => {
+		if (contentState.length === 0) {
+			return setContentState([])
+		}
+		let newArr = contentState
+		newArr.pop()
+		setSelected(null)
+		setContentState(newArr)
+		console.log(contentState)
+	}
 
-    <EditorContext.Provider value={{
-      loadDesign, contentState, setContentState
-      
-    }}>
-    {children}
-  </EditorContext.Provider>
-    )
+	const handleText = (value, index) => {
+		// console.log(value, index)
+		console.log('Editor>HandleText', value)
+		setTextContent({ value: value, index: index })
+	}
+
+	const handleEdit = (value, index) => {
+		// console.log(value, index)
+
+		setEditSelection({ value: value, index: index })
+	}
+
+	return (
+		<EditorContext.Provider
+			value={{
+				loadDesign,
+				deleteLast,
+				contentState,
+				setContentState,
+				designName,
+				textContent,
+				setTextContent,
+				scale,
+				setScale,
+				selected,
+				setSelected,
+				editSelection,
+				setEditSelection,
+				handleText,
+				handleEdit,
+			}}
+		>
+			{children}
+		</EditorContext.Provider>
+	)
 }
 
 export default EditorState
