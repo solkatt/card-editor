@@ -18,14 +18,16 @@ const style = {
 	p: 4,
 }
 
-export default function CreateNewDesign() {
+export default function CreateNewDesignModal() {
 	const [open, setOpen] = React.useState(false)
 	const handleOpen = () => setOpen(true)
 	const handleClose = () => setOpen(false)
 
 	return (
 		<div>
-			<Button onClick={handleOpen}>Open modal</Button>
+			<Button variant='outlined' onClick={handleOpen}>
+				Create new design
+			</Button>
 			<Modal
 				open={open}
 				onClose={handleClose}

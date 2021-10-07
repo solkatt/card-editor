@@ -17,7 +17,6 @@ const convertToMesh = (props) => {
 	})
 }
 
-
 export const createImg = (item, i) => {
 	var planeGeom = new THREE.PlaneBufferGeometry(50, 50)
 
@@ -36,7 +35,11 @@ export const createImg = (item, i) => {
 				item.scale.z
 			)
 		} else {
-			mesh.scale.set(0.02, (tex.image.height / tex.image.width) * 0.02, 0.02)
+			mesh.scale.set(
+				0.02,
+				(tex.image.height / tex.image.width) * 0.02,
+				0.02
+			)
 		}
 		// imageRatio = tex.image.height / tex.image.width
 		// mesh.position.set(0, 0, 0.1)
@@ -66,16 +69,13 @@ export const createImg = (item, i) => {
 		mesh.position.z = 0.1 * i
 	}
 
-	if (item.uuid) mesh.uuid = item.uuid
-
-	// mesh.name = "Bengt"
-
 	return mesh
 }
 
 export const createText = (item, i) => {
 	let text = new Text()
 
+	// Möjlighet att ladda in egna fonter
 	// text.font = 'https://fonts.gstatic.com/s/raleway/v14/1Ptrg8zYS_SKggPNwK4vaqI.woff'
 	text.text = item.text
 	text.fontSize = 3
@@ -86,16 +86,6 @@ export const createText = (item, i) => {
 	text.textAlign = 'justify'
 	text.anchorX = 'left'
 	text.anchorY = 'middle'
-
-	// if (item.position) {
-	// 	text.position.x = item.position.x
-	// 	text.position.y = item.position.y
-	// 	// text.positionk.z = -10
-	// } else {
-	// 	text.position.x = 0
-	// 	text.position.y = 0
-	// 	// text.position.z = -1
-	// }
 
 	text.position.x = item.position.x
 	text.position.y = item.position.y
@@ -112,6 +102,4 @@ export const createText = (item, i) => {
 	return text
 }
 
-
 export default convertToMesh
-

@@ -1,15 +1,17 @@
 import React from 'react'
 
-import CreateNewDesign from './create/CreateNewDesign'
+import CreateNewDesignModal from './create/CreateNewDesignModal'
 import DesignCollection from './design-collection/DesignCollection'
+import DesignCollectionModal from './design-collection/DesignCollectionModal'
 
 const Landing = () => {
 	return (
 		<div>
 			<button>Create New</button>
-			<CreateNewDesign />
-			<button>Load Designs</button>
-			<DesignCollection />
+			<CreateNewDesignModal />
+			<DesignCollectionModal />
+			{/* <button>Load Designs</button> */}
+			{/* <DesignCollection /> */}
 		</div>
 	)
 }
