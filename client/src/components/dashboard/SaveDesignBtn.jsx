@@ -1,19 +1,18 @@
+import React, { useContext } from 'react'
 import Button from '@mui/material/Button'
 
 import api from '../../api'
 
 import { useParams } from 'react-router-dom'
 
+import EditorContext from '../../context/EditorContext'
+
 const SaveDesignBtn = (props) => {
-	const { contentState } = props
+	const { contentState } = useContext(EditorContext)
 
 	const { id } = useParams()
 
 	const onSubmit = async () => {
-		// this.setState({
-		//     isLoading: true,
-		// });
-
 		const content = contentState.map((item) => {
 			if (item.geometry.type === 'PlaneGeometry') {
 				return {
@@ -40,13 +39,8 @@ const SaveDesignBtn = (props) => {
 
 		await api.updateDesign(id, payload).then(
 			(res) => {
-				// localStorage.setItem('storage-object', JSON.stringify({token: res.data}))
-
-				// Load something
 				console.log(res)
 				alert('Design successfully saved')
-				// console.log(this.state.images)
-				// this.props.history.push('/products/all')
 			},
 			(err) => {
 				console.log(err)

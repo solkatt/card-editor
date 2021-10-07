@@ -1,7 +1,9 @@
 import { useContext } from 'react'
 
+//Css
 import './Dashboard.css'
 
+//Components
 import ImgControls from './controls/ImgControls'
 import TextControls from './controls/TextControls'
 import SaveDesignBtn from './SaveDesignBtn'
@@ -13,26 +15,14 @@ import AddImageFAB from './upload/AddImageFAB'
 // Context
 import EditorContext from '../../context/EditorContext'
 
-const Dashboard = (props) => {
+const Dashboard = () => {
 	const {
-		setContentState,
 		contentState,
-		setTextContent,
-		scale,
 		selected,
-		handleText,
 		handleEdit,
-		setSelected,
 		designName,
 		deleteDesignObject,
 	} = useContext(EditorContext)
-
-	// useFrame((state, delta) => {
-	// 	// mesh.current.rotation.x += 0.01
-	// })
-
-	// console.log('selected:', selected.uuid)
-	console.log('contentState', contentState)
 
 	let objIndex
 
@@ -44,17 +34,6 @@ const Dashboard = (props) => {
 		}
 
 		handleEdit(e.target.value, objIndex)
-	}
-
-	const handleTextChange = (e) => {
-		if (selected) {
-			objIndex = contentState.findIndex(
-				(obj) => obj.uuid === selected.uuid
-			)
-		}
-		let text = e.target.value
-
-		handleText(text, objIndex)
 	}
 
 	return (
@@ -70,42 +49,19 @@ const Dashboard = (props) => {
 						<h2>Text</h2>
 					)}
 
-				{/* <CreateImgButton setContentState={setContentState} /> */}
-				{/* <CreateTextButton setContentState={setContentState} /> */}
-				{/* <Input setTextContent={setTextContent} /> */}
-				{/* <UploadButton setContentState={setContentState} /> */}
-
 				<div className='add-buttons'>
-					<AddTextFAB
-						setContentState={setContentState}
-						setSelected={setSelected}
-					/>
-					<AddImageFAB
-						setContentState={setContentState}
-						setSelected={setSelected}
-					/>
+					<AddTextFAB />
+					<AddImageFAB />
 				</div>
 				{!selected && ' Select to edit'}
 
 				{selected && selected.geometry.type === 'PlaneGeometry' && (
-					<ImgControls
-						selected={selected}
-						objIndex={objIndex}
-						scale={scale}
-						handleChange={handleChange}
-					/>
+					<ImgControls handleChange={handleChange} />
 				)}
 
 				{selected &&
 					selected.geometry.type === 'InstancedBufferGeometry' && (
-						<TextControls
-							selected={selected}
-							objIndex={objIndex}
-							scale={scale}
-							handleChange={handleChange}
-							handleTextChange={handleTextChange}
-							setTextContent={setTextContent}
-						/>
+						<TextControls handleChange={handleChange} />
 					)}
 
 				{selected && (
@@ -113,9 +69,7 @@ const Dashboard = (props) => {
 						delete w/ index
 					</button>
 				)}
-				{/* <button onClick={saveDesignToDB}>save</button> */}
-				{/* <CreateDesign contentState={contentState} /> */}
-				<SaveDesignBtn contentState={contentState} />
+				<SaveDesignBtn />
 			</div>
 		</>
 	)

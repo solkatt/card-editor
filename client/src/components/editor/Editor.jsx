@@ -33,7 +33,6 @@ const EnableDragCtrls = (props) => {
 
 	return (
 		<>
-			{/* <primitive object={ex} /> */}
 			<dragControls args={[[...contentState], camera, domElement]} />
 		</>
 	)
@@ -44,6 +43,7 @@ const Editor = () => {
 		loadDesign,
 		contentState,
 		textContent,
+		setTextContent,
 		scale,
 		selected,
 		setSelected,
@@ -94,6 +94,7 @@ const Editor = () => {
 								scale={scale}
 								editSelection={editSelection}
 								textContent={textContent}
+								setTextContent={setTextContent}
 							/>
 						</AspectGroup>
 						<EnableDragCtrls contentState={contentState} />

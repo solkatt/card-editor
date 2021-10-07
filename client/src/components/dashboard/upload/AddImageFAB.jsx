@@ -16,16 +16,12 @@ const Input = styled('input')({
 })
 
 export default function AddImageFAB(props) {
-	// const { setContentState, setSelected } = props
 	const { setContentState, setSelected, createImg } =
 		useContext(EditorContext)
 
 	const handleUpload = async (e) => {
 		const file = e.target.files[0]
-
-		// return axios.get('http://localhost:5000/s3Url').then((res) => res.data)
 		const { url } = await getSecureUrl()
-		console.log(url)
 
 		const headers = {
 			'Content-Type': 'multipart/form-data',
@@ -33,8 +29,6 @@ export default function AddImageFAB(props) {
 
 		await axios.put(url, file, headers).then((res) => console.log(res.data))
 		let imageUrl = url.split('?')[0]
-
-		console.log(imageUrl)
 
 		const item = {
 			type: 'PlaneGeometry',

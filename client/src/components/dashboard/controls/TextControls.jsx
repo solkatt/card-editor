@@ -1,13 +1,15 @@
+import { useContext } from 'react'
+import EditorContext from '../../../context/EditorContext'
 import ScaleSlider from './ScaleSlider'
 
 const TextControls = (props) => {
-	const { selected, objIndex, handleChange, handleTextChange } = props
+	const { handleChange } = props
+	const { selected, handleTextChange, textContent } =
+		useContext(EditorContext)
 
 	return (
 		<div className='object-details'>
 			<span>Current obj ID: {selected ? selected.uuid : ''}</span>
-			{/* <span>ScaleX: {selected ? selected.scale.x : ''} </span> */}
-			<span>Index: {objIndex} </span>
 
 			<div className='slidecontainer'>
 				<ScaleSlider
@@ -23,7 +25,7 @@ const TextControls = (props) => {
 						border: '1px #c2c2c2 solid',
 					}}
 					type='text'
-					defaultValue={selected.text}
+					value={textContent.value}
 					onChange={(e) => handleTextChange(e)}
 				/>
 			</div>

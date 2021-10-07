@@ -8,31 +8,28 @@ import convertToMesh, { createImg, createText } from './convertToMesh'
 const EditorState = ({ children }) => {
 	const [contentState, setContentState] = useState([])
 	const [designName, setDesignName] = useState('')
-	const [isLoading, setIsLoading] = useState(false)
+	// const [isLoading, setIsLoading] = useState(false)
 	const [textContent, setTextContent] = useState('')
 	const [scale, setScale] = useState(1)
 	const [selected, setSelected] = useState()
 	const [editSelection, setEditSelection] = useState()
 
 	const loadDesign = async (id) => {
-		setIsLoading(true)
+		// setIsLoading(true)
 
 		await api
 			.getDesignById(id)
 			.then((design) => {
-				console.log('FROM DB', design.data.data)
 				const meshes = convertToMesh({ design: design.data.data })
 				setContentState(meshes)
 				setDesignName(design.data.data.designName)
 
-				setIsLoading(false)
+				// setIsLoading(false)
 			})
 			.catch((err) => {
 				console.log(err)
-				setIsLoading(false)
+				// setIsLoading(false)
 			})
-
-		console.log(contentState)
 	}
 
 	const deleteDesignObject = (uuid) => {
@@ -41,20 +38,29 @@ const EditorState = ({ children }) => {
 		}
 
 		const newContent = contentState.filter((item) => item.uuid !== uuid)
-
 		setSelected(null)
 		setContentState(newContent)
 	}
 
 	const handleText = (value, index) => {
-		// console.log(value, index)
-		console.log('Editor>HandleText', value)
 		setTextContent({ value: value, index: index })
 	}
 
-	const handleEdit = (value, index) => {
-		// console.log(value, index)
+	const handleTextChange = (e) => {
+		e.preventDefault()
+		let objIndex
 
+		if (selected) {
+			objIndex = contentState.findIndex(
+				(obj) => obj.uuid === selected.uuid
+			)
+		}
+
+		let text = e.target.value
+		setTextContent({ value: text, index: objIndex })
+	}
+
+	const handleEdit = (value, index) => {
 		setEditSelection({ value: value, index: index })
 	}
 
@@ -78,6 +84,7 @@ const EditorState = ({ children }) => {
 				createImg,
 				createText,
 				deleteDesignObject,
+				handleTextChange,
 			}}
 		>
 			{children}

@@ -1,4 +1,4 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
 import Box from '@mui/material/Box'
 import Fab from '@mui/material/Fab'
 import AddIcon from '@mui/icons-material/Add'
@@ -6,11 +6,13 @@ import TextFieldsIcon from '@mui/icons-material/TextFields'
 
 import { extend } from '@react-three/fiber'
 import { Text } from 'troika-three-text'
+import EditorContext from '../../../context/EditorContext'
 
 extend({ Text })
 
 export default function AddTextFAB(props) {
-	let { setContentState, setSelected } = props
+	let { setContentState, setSelected, contentState, setTextContent } =
+		useContext(EditorContext)
 
 	const handleAddText = () => {
 		let text = new Text()
@@ -31,6 +33,7 @@ export default function AddTextFAB(props) {
 
 		setContentState((prevState) => [...prevState, text])
 		setSelected(text)
+		setTextContent({ value: text.text, index: contentState.length })
 	}
 
 	return (
