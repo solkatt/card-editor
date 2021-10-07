@@ -24,6 +24,13 @@ export default function AddTextFAB(props) {
 		text.anchorX = 'left'
 		text.anchorY = 'middle'
 
+		text.position.x = -0.5
+		text.position.y = 0
+		// text.position.z = 0.1
+		text.scale.set(0.2, 0.2, 0.2)
+		console.log('text addBtn', text.scale)
+		text.sync()
+
 		setContentState((prevState) => [...prevState, text])
 	}
 

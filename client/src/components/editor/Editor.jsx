@@ -69,31 +69,31 @@ const Editor = (props) => {
 
 	const { id } = useParams()
 
-	const mockDB = {
-		designName: 'DB Design Name',
-		designContent: [
-			{
-				type: 'PlaneGeometry',
-				position: [1, 1, 0.1],
-				scale: [0.2, 0.3, 0.2],
-				url: 'https://images.unsplash.com/photo-1618824834789-eb5d98e150f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
-				uuid: '50A82A72-9E28-40B9-8B10-93CDBED6292B',
-			},
-			{
-				type: 'PlaneGeometry',
-				position: [1, 1, 0.1],
-				scale: [0.2, 0.3, 0.2],
-				url: 'https://images.unsplash.com/photo-1618824834789-eb5d98e150f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
-				uuid: '50A82A72-9E28-40B9-8B10-93CDBEDHEHEHE',
-			},
-			{
-				type: 'InstancedBufferGeometry',
-				text: 'Hej från DB',
-				scale: [0.2, 0.3, 0.2],
-				uuid: '50A82A72-9E28-40B9-8dsdCDBEDHEHEHE',
-			},
-		],
-	}
+	// const mockDB = {
+	// 	designName: 'DB Design Name',
+	// 	designContent: [
+	// 		{
+	// 			type: 'PlaneGeometry',
+	// 			position: [1, 1, 0.1],
+	// 			scale: [0.2, 0.3, 0.2],
+	// 			url: 'https://images.unsplash.com/photo-1618824834789-eb5d98e150f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
+	// 			uuid: '50A82A72-9E28-40B9-8B10-93CDBED6292B',
+	// 		},
+	// 		{
+	// 			type: 'PlaneGeometry',
+	// 			position: [1, 1, 0.1],
+	// 			scale: [0.2, 0.3, 0.2],
+	// 			url: 'https://images.unsplash.com/photo-1618824834789-eb5d98e150f8?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80',
+	// 			uuid: '50A82A72-9E28-40B9-8B10-93CDBEDHEHEHE',
+	// 		},
+	// 		{
+	// 			type: 'InstancedBufferGeometry',
+	// 			text: 'Hej från DB',
+	// 			scale: [0.2, 0.3, 0.2],
+	// 			uuid: '50A82A72-9E28-40B9-8dsdCDBEDHEHEHE',
+	// 		},
+	// 	],
+	// }
 
 	useEffect(() => {
 		// const meshes = loadContent({ dbData: mockDB })

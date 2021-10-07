@@ -31,7 +31,7 @@ const SaveDesignBtn = (props) => {
 				return {
 					type: item.geometry.type,
 					position: item.position,
-					scale: item.position,
+					scale: item.scale,
 					text: item.text,
 					uuid: item.uuid,
 				}

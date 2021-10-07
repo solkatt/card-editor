@@ -44,7 +44,7 @@ const CardContent = (props) => {
 	}
 
 	return contentState.map((item, i) => {
-		// console.log('ITEM:', item)
+		console.log('ITEM SCALE X:', item.scale.x)
 		// const type = item.geometry.type
 
 		return (
@@ -52,6 +52,7 @@ const CardContent = (props) => {
 				<primitive
 					// onClick={(item) => handleSize(i)}
 					position={[item.position.x, item.position.y, 0.1 * i]}
+					scale={[item.scale.x, item.scale.y, item.scale.z]}
 					// position={[0, 0, -10]}
 					// renderOrder={i}
 					key={i}
