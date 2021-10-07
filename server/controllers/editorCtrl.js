@@ -12,8 +12,6 @@ createDesign = (req, res) => {
 
 	const design = new Design(body)
 
-	console.log(design)
-
 	if (!design) {
 		return res.status(400).json({
 			success: false,
@@ -37,8 +35,6 @@ createDesign = (req, res) => {
 			})
 		})
 }
-
-////////////////
 
 getDesignById = async (req, res) => {
 	await Design.findOne(
@@ -79,8 +75,6 @@ updateDesign = async (req, res) => {
 		})
 	}
 
-	// console.log('hääär:', body)
-
 	Design.findOne(
 		{
 			_id: req.params.id,
@@ -114,7 +108,6 @@ updateDesign = async (req, res) => {
 }
 
 getAllDesigns = async (req, res) => {
-	
 	await Design.find({}, (err, designs) => {
 		if (err) {
 			return res.status(400).json({
@@ -132,40 +125,14 @@ getAllDesigns = async (req, res) => {
 			success: true,
 			data: designs,
 		})
-	}).clone().catch((err) => console.log(err))
+	})
+		.clone()
+		.catch((err) => console.log(err))
 }
-
-// deleteProduct = async (req, res) => {
-// 	await Product.findOneAndDelete(
-// 		{
-// 			_id: req.params.id,
-// 		},
-// 		(err, product) => {
-// 			if (err) {
-// 				return res.status(400).json({
-// 					success: false,
-// 					error: err,
-// 				})
-// 			}
-
-// 			if (!product) {
-// 				return res.status(404).json({
-// 					success: false,
-// 					error: `Product not found`,
-// 				})
-// 			}
-
-// 			return res.status(200).json({
-// 				success: true,
-// 				data: product,
-// 			})
-// 		}
-// 	).catch((err) => console.log(err))
-// }
 
 module.exports = {
 	createDesign,
 	getDesignById,
 	updateDesign,
-	getAllDesigns
+	getAllDesigns,
 }

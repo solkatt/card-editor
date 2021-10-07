@@ -1,6 +1,6 @@
 import React, { useRef, useEffect } from 'react'
 
-const CardContent = (props) => {
+const DesignContent = (props) => {
 	let {
 		contentState,
 		setSelected,
@@ -63,4 +63,4 @@ const CardContent = (props) => {
 	})
 }
 
-export default CardContent
+export default DesignContent

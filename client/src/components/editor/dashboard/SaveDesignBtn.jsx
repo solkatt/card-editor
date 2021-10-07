@@ -1,11 +1,11 @@
 import React, { useContext } from 'react'
 import Button from '@mui/material/Button'
 
-import api from '../../api'
+import api from '../../../api'
 
 import { useParams } from 'react-router-dom'
 
-import EditorContext from '../../context/EditorContext'
+import EditorContext from '../../../context/EditorContext'
 
 const SaveDesignBtn = (props) => {
 	const { contentState } = useContext(EditorContext)

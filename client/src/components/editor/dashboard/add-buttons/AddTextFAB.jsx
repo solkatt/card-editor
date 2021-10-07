@@ -6,7 +6,7 @@ import TextFieldsIcon from '@mui/icons-material/TextFields'
 
 import { extend } from '@react-three/fiber'
 import { Text } from 'troika-three-text'
-import EditorContext from '../../../context/EditorContext'
+import EditorContext from '../../../../context/EditorContext'
 
 extend({ Text })
 

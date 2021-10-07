@@ -4,7 +4,7 @@ import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import Modal from '@mui/material/Modal'
 
-import CreateBtn from './createBtn'
+import CreateBtn from './CreateBtn'
 
 const style = {
 	position: 'absolute',

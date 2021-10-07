@@ -6,11 +6,11 @@ import { Canvas, extend, useThree } from '@react-three/fiber'
 // Three
 import { DragControls } from 'three/examples/jsm/controls/DragControls'
 
-import Dashboard from '../dashboard/Dashboard'
+import Dashboard from './dashboard/Dashboard'
 
 import { Stats } from '@react-three/drei'
 
-import CardContent from '../dashboard/cardContent/CardContent'
+import DesignContent from './design-content/DesignContent'
 
 import { useParams } from 'react-router-dom'
 
@@ -87,7 +87,7 @@ const Editor = () => {
 						}}
 					>
 						<AspectGroup>
-							<CardContent
+							<DesignContent
 								contentState={contentState}
 								setSelected={setSelected}
 								selected={selected}

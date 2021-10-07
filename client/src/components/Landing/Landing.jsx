@@ -1,9 +1,9 @@
-import CreateNewDesign from './createNewDesign/CreateNewDesign'
-import DesignCollection from './designCollection.jsx/DesignCollection.jsx'
+import React from 'react'
+
+import CreateNewDesign from './create/CreateNewDesign'
+import DesignCollection from './design-collection/DesignCollection'
 
 const Landing = () => {
-
-
 	return (
 		<div>
 			<button>Create New</button>

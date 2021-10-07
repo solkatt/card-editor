@@ -9,7 +9,7 @@ import ImageIcon from '@mui/icons-material/Image'
 import axios from 'axios'
 
 //Context
-import EditorContext from '../../../context/EditorContext'
+import EditorContext from '../../../../context/EditorContext'
 
 const Input = styled('input')({
 	display: 'none',

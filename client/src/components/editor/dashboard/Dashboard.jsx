@@ -9,11 +9,11 @@ import TextControls from './controls/TextControls'
 import SaveDesignBtn from './SaveDesignBtn'
 
 ///FAB
-import AddTextFAB from './upload/AddTextFAB'
-import AddImageFAB from './upload/AddImageFAB'
+import AddTextFAB from './add-buttons/AddTextFAB'
+import AddImageFAB from './add-buttons/AddImageFAB'
 
 // Context
-import EditorContext from '../../context/EditorContext'
+import EditorContext from '../../../context/EditorContext'
 
 const Dashboard = () => {
 	const {
