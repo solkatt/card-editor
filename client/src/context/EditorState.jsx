@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import EditorContext from './EditorContext'
 import api from '../api'
 
-import convertToMesh from './convertToMesh'
+import convertToMesh, { createImg, createText } from './convertToMesh'
 
 const EditorState = ({ children }) => {
 	const [contentState, setContentState] = useState([])
@@ -76,6 +76,8 @@ const EditorState = ({ children }) => {
 				setEditSelection,
 				handleText,
 				handleEdit,
+				createImg,
+				createText,
 			}}
 		>
 			{children}

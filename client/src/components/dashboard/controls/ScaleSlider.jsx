@@ -6,16 +6,12 @@ import Slider from '@mui/material/Slider'
 export default function ScaleSlider(props) {
 	const { selected, handleChange, max, defaultValue } = props
 
-
-console.log('selected value:', defaultValue)
+	console.log('selected value:', defaultValue)
 
 	return (
 		<>
-
-
 			<Box width={300}>
 				<Slider
-
 					size='small'
 					defaultValue={selected.scale.x}
 					value={selected.scale.x}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, useContext } from 'react'
+import React, { useEffect, useRef, useContext } from 'react'
 
 //Three Fiber
 import { Canvas, extend, useThree } from '@react-three/fiber'
@@ -12,13 +12,7 @@ import { Stats } from '@react-three/drei'
 
 import CardContent from '../dashboard/cardContent/CardContent'
 
-import loadContent from './loadContent'
-
-import axios from 'axios'
-
-import { Redirect, useParams } from 'react-router-dom'
-
-import api from '../../api'
+import { useParams } from 'react-router-dom'
 
 import EditorContext from '../../context/EditorContext'
 

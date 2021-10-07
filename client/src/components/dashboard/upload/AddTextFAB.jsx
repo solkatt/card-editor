@@ -2,7 +2,6 @@ import * as React from 'react'
 import Box from '@mui/material/Box'
 import Fab from '@mui/material/Fab'
 import AddIcon from '@mui/icons-material/Add'
-import ImageIcon from '@mui/icons-material/Image'
 import TextFieldsIcon from '@mui/icons-material/TextFields'
 
 import { extend } from '@react-three/fiber'

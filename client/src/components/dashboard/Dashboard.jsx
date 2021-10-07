@@ -1,22 +1,14 @@
 import { useContext } from 'react'
 
-import Input from '../Input'
-import { CreateTextButton } from './createImg/Text'
 import './Dashboard.css'
-
-import CreateImgButton from '../dashboard/createImg/CreateImg'
 
 import ImgControls from './controls/ImgControls'
 import TextControls from './controls/TextControls'
-import UploadButton from './upload/UploadBtn'
 import SaveDesignBtn from './SaveDesignBtn'
 
 ///FAB
 import AddTextFAB from './upload/AddTextFAB'
 import AddImageFAB from './upload/AddImageFAB'
-
-// CRUD
-import CreateDesign from '../CreateDesign'
 
 // Context
 import EditorContext from '../../context/EditorContext'

@@ -1,6 +1,5 @@
-import * as React from 'react'
+import React, { useContext } from 'react'
 import { styled } from '@mui/material/styles'
-import Stack from '@mui/material/Stack'
 import Fab from '@mui/material/Fab'
 import Box from '@mui/material/Box'
 
@@ -8,14 +7,18 @@ import AddIcon from '@mui/icons-material/Add'
 import ImageIcon from '@mui/icons-material/Image'
 
 import axios from 'axios'
-import { createImg } from '../../editor/loadContent'
+
+//Context
+import EditorContext from '../../../context/EditorContext'
 
 const Input = styled('input')({
 	display: 'none',
 })
 
 export default function AddImageFAB(props) {
-	const { setContentState, setSelected } = props
+	// const { setContentState, setSelected } = props
+	const { setContentState, setSelected, createImg } =
+		useContext(EditorContext)
 
 	const handleUpload = async (e) => {
 		const file = e.target.files[0]
@@ -40,7 +43,6 @@ export default function AddImageFAB(props) {
 		const mesh = createImg(item)
 		setContentState((prevState) => [...prevState, mesh])
 		setSelected(mesh)
-
 	}
 
 	const getSecureUrl = async () => {

@@ -1,8 +1,7 @@
-import TextInput from './TextInput'
 import ScaleSlider from './ScaleSlider'
 
 const TextControls = (props) => {
-	const { selected, objIndex, handleChange, handleTextChange} = props
+	const { selected, objIndex, handleChange, handleTextChange } = props
 
 	return (
 		<div className='object-details'>
@@ -11,9 +10,12 @@ const TextControls = (props) => {
 			<span>Index: {objIndex} </span>
 
 			<div className='slidecontainer'>
-				<ScaleSlider 
-				selected={selected} 
-				handleChange={handleChange} max={0.2} defaultValue={0.1}/>
+				<ScaleSlider
+					selected={selected}
+					handleChange={handleChange}
+					max={0.2}
+					defaultValue={0.1}
+				/>
 				<input
 					style={{
 						height: '4rem',
@@ -25,11 +27,6 @@ const TextControls = (props) => {
 					onChange={(e) => handleTextChange(e)}
 				/>
 			</div>
-
-			{/* <TextInput
-				selected={selected}
-				handleTextChange={handleTextChange}
-			/> */}
 		</div>
 	)
 }

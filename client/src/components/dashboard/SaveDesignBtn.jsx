@@ -1,16 +1,12 @@
-import { useState } from 'react'
-import TextField from '@mui/material/TextField'
 import Button from '@mui/material/Button'
 
 import api from '../../api'
 
-import { useHistory, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 
 const SaveDesignBtn = (props) => {
 	const { contentState } = props
 
-	const [designName, setDesignName] = useState()
-	// const history = useHistory()
 	const { id } = useParams()
 
 	const onSubmit = async () => {
@@ -35,9 +31,9 @@ const SaveDesignBtn = (props) => {
 					text: item.text,
 					uuid: item.uuid,
 				}
+			return ''
 		})
 
-		console.log('CONTENT:', content)
 		const payload = {
 			designContent: content,
 		}
@@ -51,8 +47,6 @@ const SaveDesignBtn = (props) => {
 				alert('Design successfully saved')
 				// console.log(this.state.images)
 				// this.props.history.push('/products/all')
-
-				const { id } = res.data
 			},
 			(err) => {
 				console.log(err)
