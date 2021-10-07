@@ -113,26 +113,27 @@ updateDesign = async (req, res) => {
 	)
 }
 
-// getAllDesigns = async (req, res) => {
-// 	await Product.find({}, (err, products) => {
-// 		if (err) {
-// 			return res.status(400).json({
-// 				success: false,
-// 				error: err,
-// 			})
-// 		}
-// 		if (!products.length) {
-// 			return res.status(404).json({
-// 				success: false,
-// 				error: `No Products found`,
-// 			})
-// 		}
-// 		return res.status(200).json({
-// 			success: true,
-// 			data: products,
-// 		})
-// 	}).catch((err) => console.log(err))
-// }
+getAllDesigns = async (req, res) => {
+	
+	await Design.find({}, (err, designs) => {
+		if (err) {
+			return res.status(400).json({
+				success: false,
+				error: err,
+			})
+		}
+		if (!designs.length) {
+			return res.status(404).json({
+				success: false,
+				error: `No Designs found`,
+			})
+		}
+		return res.status(200).json({
+			success: true,
+			data: designs,
+		})
+	}).clone().catch((err) => console.log(err))
+}
 
 // deleteProduct = async (req, res) => {
 // 	await Product.findOneAndDelete(
@@ -166,4 +167,5 @@ module.exports = {
 	createDesign,
 	getDesignById,
 	updateDesign,
+	getAllDesigns
 }

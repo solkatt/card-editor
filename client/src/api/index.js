@@ -15,10 +15,15 @@ export const getDesignById = (id) => api.get(`/editor/design/${id}`)
 export const updateDesign = (id, payload) =>
 	api.put(`/editor/design/${id}`, payload)
 
+	export const getAllDesigns = () =>
+	api.get('/editor/designs/')
+
+
 const apis = {
 	addDesign,
 	getDesignById,
 	updateDesign,
+	getAllDesigns
 }
 
 export default apis
