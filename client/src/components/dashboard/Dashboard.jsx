@@ -27,6 +27,7 @@ const Dashboard = (props) => {
 		handleEdit,
 		deleteLast,
 		saveDesignToDB,
+		designName
 	} = props
 
 	// useFrame((state, delta) => {
@@ -71,10 +72,10 @@ const Dashboard = (props) => {
 	return (
 		<>
 			<div className='dashboard'>
-				<h2></h2>
+				<h2>{designName}</h2>
 
 				{selected && selected.geometry.type === 'PlaneGeometry' && (
-					<h2>Bild</h2>
+					<h2>Image {selected.objIndex}</h2>
 				)}
 				{selected &&
 					selected.geometry.type === 'InstancedBufferGeometry' && (
@@ -114,7 +115,7 @@ const Dashboard = (props) => {
 					)}
 
 				{selected && <button onClick={deleteLast}>delete</button>}
-				<button onClick={saveDesignToDB}>save</button>
+				{/* <button onClick={saveDesignToDB}>save</button> */}
 				{/* <CreateDesign contentState={contentState} /> */}
 				<SaveDesignBtn contentState={contentState} />
 			</div>

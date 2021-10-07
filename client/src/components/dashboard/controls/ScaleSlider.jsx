@@ -5,19 +5,23 @@ import Slider from '@mui/material/Slider'
 
 export default function ScaleSlider(props) {
 	const { selected, handleChange } = props
+
+
+
 	return (
 		<>
 			<h2>{selected.scale.x}</h2>
 
 			<Box width={300}>
 				<Slider
+  			
 					size='small'
-					defaultValue={selected.scale.x}
+					value={props.selected.scale.x ? props.selected.scale.x  : ""}
 					aria-label='Small'
 					valueLabelDisplay='auto'
 					min={0.01}
-					max={2}
-					step={0.01}
+					max={0.2}
+					step={0.001}
 					onChange={(e) => handleChange(e)}
 				/>
 			</Box>
