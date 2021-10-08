@@ -1,7 +1,7 @@
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css'
 import Editor from './components/editor/Editor'
-import Landing from './components/landing/Landing'
+import Landing from './components/Landing/Landing'
 
 import Loader from './components/loader/Loader'
 function App() {
