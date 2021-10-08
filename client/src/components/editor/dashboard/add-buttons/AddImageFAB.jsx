@@ -16,10 +16,12 @@ const Input = styled('input')({
 })
 
 export default function AddImageFAB(props) {
-	const { setContentState, setSelected, createImg } =
+	const { setContentState, setSelected, createImg, setIsLoading } =
 		useContext(EditorContext)
 
 	const handleUpload = async (e) => {
+		setIsLoading(true)
+
 		const file = e.target.files[0]
 		const { url } = await getSecureUrl()
 
@@ -27,7 +29,17 @@ export default function AddImageFAB(props) {
 			'Content-Type': 'multipart/form-data',
 		}
 
-		await axios.put(url, file, headers).then((res) => console.log(res.data))
+		await axios
+			.put(url, file, headers)
+			.then((res) => {
+				console.log(res.data)
+				setIsLoading(false)
+			})
+			.catch((err) => {
+				console.log(err)
+				setIsLoading(false)
+			})
+
 		let imageUrl = url.split('?')[0]
 
 		const item = {

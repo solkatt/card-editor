@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useContext } from 'react'
 import { useHistory } from 'react-router-dom'
 
 /// MUI
@@ -12,36 +12,34 @@ import LabelIcon from '@mui/icons-material/Label'
 
 import api from '../../../api'
 
+import EditorContext from '../../../context/EditorContext'
+
 const DesignCollection = () => {
 	const [designs, setDesigns] = useState([])
 	const history = useHistory()
+	const { setIsLoading } = useContext(EditorContext)
 
 	useEffect(() => {
 		loadDesigns()
 	}, [])
 
 	const loadDesigns = async () => {
-		// const { storeID } = this.state.store._id
-
-		// console.log(id)
-		// this.setState({ isLoading: true })
+		setIsLoading(true)
 
 		await api.getAllDesigns().then(
 			(designs) => {
-				console.log('from db:', designs)
 				setDesigns(designs.data.data)
 
-				// isLoading: false,
-				console.log(designs)
+				setIsLoading(false)
 			},
 			(err) => {
 				console.log(err)
 
-				// isLoading: false,
+				setIsLoading(false)
 			}
 		)
 
-		// this.setState({ isLoading: false })
+		setIsLoading(false)
 	}
 
 	const handleClick = (id) => {
@@ -66,7 +64,7 @@ const DesignCollection = () => {
 					<List>
 						{designs.map((design) => {
 							return (
-								<ListItem disablePadding>
+								<ListItem disablePadding key={design._id}>
 									<ListItemButton
 										onClick={() => handleClick(design._id)}
 									>

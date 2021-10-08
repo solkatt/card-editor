@@ -9,8 +9,6 @@ const TextControls = (props) => {
 
 	return (
 		<div className='object-details'>
-			<span>Current obj ID: {selected ? selected.uuid : ''}</span>
-
 			<div className='slidecontainer'>
 				<ScaleSlider
 					selected={selected}

@@ -7,10 +7,8 @@ import DesignCollectionModal from './design-collection/DesignCollectionModal'
 const Landing = () => {
 	return (
 		<div>
-			<button>Create New</button>
 			<CreateNewDesignModal />
 			<DesignCollectionModal />
-			{/* <button>Load Designs</button> */}
 			{/* <DesignCollection /> */}
 		</div>
 	)

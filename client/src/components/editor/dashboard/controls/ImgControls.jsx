@@ -9,11 +9,7 @@ const ImgControls = (props) => {
 
 	return (
 		<div className='object-details'>
-			<span>Current obj ID: {selected ? selected.uuid : ''} </span>
-
 			<div className='slidecontainer'>
-				<h2>{scale}</h2>
-
 				<ScaleSlider
 					selected={selected}
 					handleChange={handleChange}

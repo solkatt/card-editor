@@ -1,19 +1,18 @@
 import React, { useEffect, useRef, useContext } from 'react'
-
-//Three Fiber
-import { Canvas, extend, useThree } from '@react-three/fiber'
-
-// Three
-import { DragControls } from 'three/examples/jsm/controls/DragControls'
-
-import Dashboard from './dashboard/Dashboard'
-
-import { Stats } from '@react-three/drei'
-
-import DesignContent from './design-content/DesignContent'
-
 import { useParams } from 'react-router-dom'
 
+/// Three Fiber
+import { Canvas, extend, useThree } from '@react-three/fiber'
+import { Stats } from '@react-three/drei'
+
+/// Three
+import { DragControls } from 'three/examples/jsm/controls/DragControls'
+
+/// Components
+import Dashboard from './dashboard/Dashboard'
+import DesignContent from './design-content/DesignContent'
+import Loader from '../loader/Loader'
+/// Context
 import EditorContext from '../../context/EditorContext'
 
 // Css

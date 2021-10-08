@@ -8,14 +8,14 @@ import convertToMesh, { createImg, createText } from './convertToMesh'
 const EditorState = ({ children }) => {
 	const [contentState, setContentState] = useState([])
 	const [designName, setDesignName] = useState('')
-	// const [isLoading, setIsLoading] = useState(false)
+	const [isLoading, setIsLoading] = useState(false)
 	const [textContent, setTextContent] = useState('')
 	const [scale, setScale] = useState(1)
 	const [selected, setSelected] = useState()
 	const [editSelection, setEditSelection] = useState()
 
 	const loadDesign = async (id) => {
-		// setIsLoading(true)
+		setIsLoading(true)
 
 		await api
 			.getDesignById(id)
@@ -24,11 +24,11 @@ const EditorState = ({ children }) => {
 				setContentState(meshes)
 				setDesignName(design.data.data.designName)
 
-				// setIsLoading(false)
+				setIsLoading(false)
 			})
 			.catch((err) => {
 				console.log(err)
-				// setIsLoading(false)
+				setIsLoading(false)
 			})
 	}
 
@@ -85,6 +85,8 @@ const EditorState = ({ children }) => {
 				createText,
 				deleteDesignObject,
 				handleTextChange,
+				isLoading,
+				setIsLoading,
 			}}
 		>
 			{children}
