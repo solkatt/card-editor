@@ -7,6 +7,7 @@ import AddIcon from '@mui/icons-material/Add'
 import ImageIcon from '@mui/icons-material/Image'
 
 import axios from 'axios'
+import api from '../../../../api'
 
 //Context
 import EditorContext from '../../../../context/EditorContext'
@@ -23,7 +24,7 @@ export default function AddImageFAB(props) {
 		setIsLoading(true)
 
 		const file = e.target.files[0]
-		const { url } = await getSecureUrl()
+		const { url } = await api.getSecureUrl()
 
 		const headers = {
 			'Content-Type': 'multipart/form-data',
@@ -39,6 +40,7 @@ export default function AddImageFAB(props) {
 				console.log(err)
 				setIsLoading(false)
 			})
+		setIsLoading(false)
 
 		let imageUrl = url.split('?')[0]
 
@@ -49,10 +51,6 @@ export default function AddImageFAB(props) {
 		const mesh = createImg(item)
 		setContentState((prevState) => [...prevState, mesh])
 		setSelected(mesh)
-	}
-
-	const getSecureUrl = async () => {
-		return axios.get('http://localhost:5000/s3Url').then((res) => res.data)
 	}
 
 	return (

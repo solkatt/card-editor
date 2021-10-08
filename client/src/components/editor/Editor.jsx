@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom'
 
 /// Three Fiber
 import { Canvas, extend, useThree } from '@react-three/fiber'
-import { Stats } from '@react-three/drei'
+// import { Stats } from '@react-three/drei'
 
 /// Three
 import { DragControls } from 'three/examples/jsm/controls/DragControls'
@@ -19,8 +19,6 @@ import EditorContext from '../../context/EditorContext'
 import './Editor.css'
 
 extend({ DragControls, Text })
-
-///////////////////////////////////////////////
 
 const EnableDragCtrls = (props) => {
 	let { contentState } = props
@@ -49,8 +47,6 @@ const Editor = () => {
 		editSelection,
 	} = useContext(EditorContext)
 
-	// const [contentState, setContentState] = useState([])
-
 	const { id } = useParams()
 
 	useEffect(() => {
@@ -76,7 +72,6 @@ const Editor = () => {
 				<div ref={containerRef} className='design-area'>
 					<Canvas
 						colorManagement
-						// background={'black'}
 						orthographic
 						camera={{
 							zoom: 50,
@@ -97,7 +92,7 @@ const Editor = () => {
 							/>
 						</AspectGroup>
 						<EnableDragCtrls contentState={contentState} />
-						<Stats />
+						{/* <Stats /> */}
 					</Canvas>
 				</div>
 			</div>
