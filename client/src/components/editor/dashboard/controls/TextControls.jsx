@@ -18,7 +18,10 @@ const TextControls = (props) => {
 				/>
 				<input
 					style={{
-						height: '4rem',
+						height: '2rem',
+						width: '100%',
+						fontSize: '1em',
+						paddingLeft: '.5em',
 						borderRadius: '4px',
 						border: '1px #c2c2c2 solid',
 					}}
