@@ -1,10 +1,8 @@
 import axios from 'axios'
 
-// const production = '/'
-// const development = 'http://localhost:5000/'
-// const url = process.env.NODE_ENV ? production : development
-
-const url = 'http://localhost:5000/'
+const production = '/'
+const development = 'http://localhost:5000/'
+const url = process.env.NODE_ENV ? production : development
 
 const api = axios.create({
 	baseURL: url,
@@ -15,15 +13,13 @@ export const getDesignById = (id) => api.get(`/editor/design/${id}`)
 export const updateDesign = (id, payload) =>
 	api.put(`/editor/design/${id}`, payload)
 
-	export const getAllDesigns = () =>
-	api.get('/editor/designs/')
-
+export const getAllDesigns = () => api.get('/editor/designs/')
 
 const apis = {
 	addDesign,
 	getDesignById,
 	updateDesign,
-	getAllDesigns
+	getAllDesigns,
 }
 
 export default apis

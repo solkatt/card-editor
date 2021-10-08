@@ -6,7 +6,7 @@ import EditorContext from '../../context/EditorContext'
 
 export default function Loader() {
 	const { isLoading } = useContext(EditorContext)
-	console.log(isLoading)
+
 	return (
 		<div>
 			<Backdrop
