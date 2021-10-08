@@ -24,26 +24,25 @@ const DesignCollection = () => {
 	}, [])
 
 	const loadDesigns = async () => {
-		setIsLoading(true)
+		// setIsLoading(true)
 
 		await api.getAllDesigns().then(
 			(designs) => {
 				setDesigns(designs.data.data)
 
-				setIsLoading(false)
+				// setIsLoading(false)
 			},
 			(err) => {
 				console.log(err)
 
-				setIsLoading(false)
+				// setIsLoading(false)
 			}
 		)
 
-		setIsLoading(false)
+		// setIsLoading(false)
 	}
 
 	const handleClick = (id) => {
-		alert(id)
 		history.push(`/editor/design/${id}`)
 
 		///

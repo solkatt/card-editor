@@ -35,14 +35,23 @@ export default function CreateNewDesignModal() {
 				aria-describedby='modal-modal-description'
 			>
 				<Box sx={style}>
-					<Typography
-						id='modal-modal-title'
-						variant='h6'
-						component='h2'
+					<div
+						style={{
+							display: 'flex',
+							flexDirection: 'column',
+							justifyContent: 'space-between',
+							height: '15rem',
+						}}
 					>
-						Create new design
-					</Typography>
-					<CreateBtn />
+						<Typography
+							id='modal-modal-title'
+							variant='h6'
+							component='h2'
+						>
+							Create new design
+						</Typography>
+						<CreateBtn />
+					</div>
 				</Box>
 			</Modal>
 		</div>
