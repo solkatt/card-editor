@@ -1,11 +1,11 @@
 import axios from 'axios'
 
-const production = '/'
-const development = 'http://localhost:5000/'
-const url = process.env.NODE_ENV ? production : development
+// const production = '/'
+// const development = 'http://localhost:5000/'
+// const url = process.env.NODE_ENV ? production : development
 
 const api = axios.create({
-	baseURL: url,
+	baseURL: 'http://localhost:5000/',
 })
 
 export const addDesign = (payload) => api.post(`/editor/design/add`, payload)

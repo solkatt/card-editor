@@ -33,7 +33,7 @@ export default function AddImageFAB(props) {
 		await axios
 			.put(url, file, headers)
 			.then((res) => {
-				console.log(res.data)
+				// console.log(res.data)
 				setIsLoading(false)
 			})
 			.catch((err) => {

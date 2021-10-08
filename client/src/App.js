@@ -11,7 +11,11 @@ function App() {
 			<Router>
 				<Switch>
 					<Route path='/' exact component={Landing} />
-					<Route path='/editor/design/:id' exact component={Editor} />
+					<Route
+						path='/editor/designcollection/:id'
+						exact
+						component={Editor}
+					/>
 				</Switch>
 			</Router>
 		</div>

@@ -92,7 +92,7 @@ export const createText = (item, i) => {
 
 	text.scale.x = item.scale.x
 	text.scale.y = item.scale.y
-	text.scale.y = item.scale.z
+	text.scale.z = item.scale.z
 
 	text.sync()
 

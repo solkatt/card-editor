@@ -39,7 +39,7 @@ const SaveDesignBtn = (props) => {
 
 		await api.updateDesign(id, payload).then(
 			(res) => {
-				console.log(res)
+				console.log(res.data)
 				alert('Design successfully saved')
 			},
 			(err) => {

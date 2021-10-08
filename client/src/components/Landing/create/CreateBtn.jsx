@@ -22,15 +22,9 @@ const CreateBtn = (props) => {
 
 		await api.addDesign(payload).then(
 			(res) => {
-				// localStorage.setItem('storage-object', JSON.stringify({token: res.data}))
-
-				// Load something
-				console.log(res)
-				alert('Design successfully created')
-				// console.log(this.state.images)
-				// this.props.history.push('/products/all')
-
 				const { id } = res.data
+				// console.log(res.data)
+				// alert('Design successfully created')
 				openEditor(id)
 			},
 			(err) => {
@@ -40,8 +34,7 @@ const CreateBtn = (props) => {
 	}
 
 	const openEditor = (id) => {
-		console.log('Design ID;', id)
-		history.push(`/editor/design/${id}`)
+		history.push(`/editor/designcollection/${id}`)
 	}
 
 	const handleChange = (e) => {

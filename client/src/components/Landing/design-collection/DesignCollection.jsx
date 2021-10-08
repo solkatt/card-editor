@@ -43,7 +43,7 @@ const DesignCollection = () => {
 	}
 
 	const handleClick = (id) => {
-		history.push(`/editor/design/${id}`)
+		history.push(`/editor/designcollection/${id}`)
 
 		///
 	}
