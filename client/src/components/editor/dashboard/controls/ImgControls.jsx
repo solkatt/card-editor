@@ -5,7 +5,7 @@ import ScaleSlider from './ScaleSlider'
 
 const ImgControls = (props) => {
 	const { handleChange } = props
-	const { selected, scale } = useContext(EditorContext)
+	const { selected } = useContext(EditorContext)
 
 	return (
 		<div className='object-details'>

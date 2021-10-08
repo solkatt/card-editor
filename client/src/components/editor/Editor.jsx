@@ -11,7 +11,7 @@ import { DragControls } from 'three/examples/jsm/controls/DragControls'
 /// Components
 import Dashboard from './dashboard/Dashboard'
 import DesignContent from './design-content/DesignContent'
-import Loader from '../loader/Loader'
+
 /// Context
 import EditorContext from '../../context/EditorContext'
 

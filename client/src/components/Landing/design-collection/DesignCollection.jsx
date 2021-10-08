@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 
 /// MUI
@@ -12,12 +12,12 @@ import LabelIcon from '@mui/icons-material/Label'
 
 import api from '../../../api'
 
-import EditorContext from '../../../context/EditorContext'
+// import EditorContext from '../../../context/EditorContext'
 
 const DesignCollection = () => {
 	const [designs, setDesigns] = useState([])
 	const history = useHistory()
-	const { setIsLoading } = useContext(EditorContext)
+	// const { setIsLoading } = useContext(EditorContext)
 
 	useEffect(() => {
 		loadDesigns()
