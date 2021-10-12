@@ -45,6 +45,7 @@ const DesignContent = (props) => {
 	}
 
 	const handleSelection = (e, i) => {
+		e.stopPropagation()
 		setSelected(e.object)
 		setTextContent({ value: e.object.text, index: i })
 	}
